@@ -347,10 +347,7 @@
       
         
           
-            <p>#面型对象高级编程之使用 <code>__slots__</code></p>
-<p>####<code>__slots__</code>1.为了给该实例绑定任何属性和方法 2.可以限制</p>
-<p>####<code>__slots__</code>用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法</p>
-<pre><code>class Student():
+            <h1 id="面型对象高级编程之使用-slots"><a href="#面型对象高级编程之使用-slots" class="headerlink" title="面型对象高级编程之使用 __slots__"></a>面型对象高级编程之使用 <code>__slots__</code></h1><h4 id="slots-1-为了给该实例绑定任何属性和方法-2-可以限制"><a href="#slots-1-为了给该实例绑定任何属性和方法-2-可以限制" class="headerlink" title="__slots__1.为了给该实例绑定任何属性和方法 2.可以限制"></a><code>__slots__</code>1.为了给该实例绑定任何属性和方法 2.可以限制</h4><h4 id="slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"><a href="#slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法" class="headerlink" title="__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"></a><code>__slots__</code>用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法</h4><pre><code>class Student():
     # 用tuple定义允许绑定的属性名称
     __slots__ = (&apos;name&apos;,&apos;age&apos;)
 
