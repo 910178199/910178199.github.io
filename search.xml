@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[面型对象高级编程之使用__slots__]]></title>
       <url>%2F2016%2F12%2F12%2F%E9%9D%A2%E5%9E%8B%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BD%BF%E7%94%A8__slots__%2F</url>
-      <content type="text"><![CDATA[面型对象高级编程之使用 __slots____slots__1.为了给该实例绑定任何属性和方法 2.可以限制__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法class Student(): # 用tuple定义允许绑定的属性名称 __slots__ = (&apos;name&apos;,&apos;age&apos;) s = Student()#创建新实例 s.name = &apos;Name&apos;#绑定属性 s.age = &apos;Age&apos; #由于s没用方法到参数中，所以报错 #s.s = &apos;s&apos; #使用__slots__要注意，__slots__定义的属性仅对当前类实例起作用 # ，对继承的子类是不起作用的： class Man(Student): pass m = Man() #m新创建的属性 m.s = &apos;a&apos; #子类调用并不起作用，报错 print(m.s,m.name) 除非在子类中也定义slots，这样，子类实例允许定义的属性就是自身的slots加上父类的slots。]]></content>
+      <content type="text"><![CDATA[面型对象高级编程之使用 __slots____slots__1.为了给该实例绑定任何属性和方法 2.可以限制__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法class Student(): # 用tuple定义允许绑定的属性名称 __slots__ = (&apos;name&apos;,&apos;age&apos;) s = Student()#创建新实例 s.name = &apos;Name&apos;#绑定属性 s.age = &apos;Age&apos; #由于s没用方法到参数中，所以报错 #s.s = &apos;s&apos; #使用__slots__要注意，__slots__定义的属性仅对当前类实例起作用 # ，对继承的子类是不起作用的： class Man(Student): pass m = Man() #m新创建的属性 m.s = &apos;a&apos; #子类调用并不起作用，报错 print(m.s,m.name) 除非在子类中也定义slots，这样，子类实例允许定义的属性就是自身的slots加上父类的slots。 12var canvas = document.getElementById("canvas");var context = canvas.getContext("2d");]]></content>
     </entry>
 
     
