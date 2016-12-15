@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用... finally```来实现：1234567```pythontry:    f = open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;)    print(f.read())finally:    if f">
+<meta name="description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：123456try:    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)    print(f.read())finally:    if f:        f.close()
+但是每次都这么写实在太繁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IO操作">
 <meta property="og:url" content="910178199.github.io/2016/12/15/IO操作/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用... finally```来实现：1234567```pythontry:    f = open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;)    print(f.read())finally:    if f">
-<meta property="og:updated_time" content="2016-12-15T01:56:18.160Z">
+<meta property="og:description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：123456try:    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)    print(f.read())finally:    if f:        f.close()
+但是每次都这么写实在太繁">
+<meta property="og:updated_time" content="2016-12-15T02:09:27.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO操作">
-<meta name="twitter:description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用... finally```来实现：1234567```pythontry:    f = open(&amp;apos;/path/to/file&amp;apos;, &amp;apos;r&amp;apos;)    print(f.read())finally:    if f">
+<meta name="twitter:description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：123456try:    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)    print(f.read())finally:    if f:        f.close()
+但是每次都这么写实在太繁">
 
 
 
@@ -341,7 +344,7 @@
       
 
       
-        <p>由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<figure class="highlight plain"><figcaption><span>... finally```来实现：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">```python</div><div class="line">try:</div><div class="line">    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)</div><div class="line">    print(f.read())</div><div class="line">finally:</div><div class="line">    if f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure></p>
+        <p>由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</div><div class="line">    print(f.read())</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">if</span> f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure></p>
 <p>但是每次都这么写实在太繁琐，所以，Python引入了with语句来自动帮我们调用close()方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    print(f.read())</div></pre></td></tr></table></figure></p>
 <p>这和前面的try … finally是一样的，但是代码更佳简洁，并且不必调用f.close()方法。</p>
 <p>调用read()会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用read(size)方法，每次最多读取size个字节的内容。另外，调用readline()可以每次读取一行内容，调用readlines()一次读取所有内容并按行返回list。因此，要根据需要决定怎么调用。</p>
