@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="StringIO很多时候，数据读写不一定是文件，也可以在内存中读写。
-StringIO顾名思义就是在内存中读写str。
-要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可：12345678910&amp;gt;&amp;gt;&amp;gt; from io import StringIO&amp;gt;&amp;gt;&amp;gt; f = StringIO()&amp;gt;&amp;gt;&amp;gt; f.writ">
+<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081# -*- coding=utf-8 -*-&apos;datetime 时间类&apos;# datetime模">
 <meta property="og:type" content="article">
-<meta property="og:title" content="StringIO和BytesIO">
-<meta property="og:url" content="910178199.github.io/2016/12/15/StringIO和BytesIO/index.html">
+<meta property="og:title" content="datetime">
+<meta property="og:url" content="910178199.github.io/2016/12/16/datetime/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="StringIO很多时候，数据读写不一定是文件，也可以在内存中读写。
-StringIO顾名思义就是在内存中读写str。
-要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可：12345678910&amp;gt;&amp;gt;&amp;gt; from io import StringIO&amp;gt;&amp;gt;&amp;gt; f = StringIO()&amp;gt;&amp;gt;&amp;gt; f.writ">
-<meta property="og:updated_time" content="2016-12-15T01:57:33.809Z">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081# -*- coding=utf-8 -*-&apos;datetime 时间类&apos;# datetime模">
+<meta property="og:updated_time" content="2016-12-16T09:29:41.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="StringIO和BytesIO">
-<meta name="twitter:description" content="StringIO很多时候，数据读写不一定是文件，也可以在内存中读写。
-StringIO顾名思义就是在内存中读写str。
-要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可：12345678910&amp;gt;&amp;gt;&amp;gt; from io import StringIO&amp;gt;&amp;gt;&amp;gt; f = StringIO()&amp;gt;&amp;gt;&amp;gt; f.writ">
+<meta name="twitter:title" content="datetime">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081# -*- coding=utf-8 -*-&apos;datetime 时间类&apos;# datetime模">
 
 
 
@@ -127,13 +121,13 @@ StringIO顾名思义就是在内存中读写str。
 
 
 
-  <link rel="canonical" href="910178199.github.io/2016/12/15/StringIO和BytesIO/"/>
+  <link rel="canonical" href="910178199.github.io/2016/12/16/datetime/"/>
 
 
 
 
 
-  <title> StringIO和BytesIO | Mr.Robot </title>
+  <title> datetime | Mr.Robot </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +261,7 @@ StringIO顾名思义就是在内存中读写str。
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/15/StringIO和BytesIO/">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/16/datetime/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="布鲁斯李">
@@ -291,7 +285,7 @@ StringIO顾名思义就是在内存中读写str。
             
             
               
-                StringIO和BytesIO
+                datetime
               
             
           </h1>
@@ -304,8 +298,8 @@ StringIO顾名思义就是在内存中读写str。
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T09:55:37+08:00">
-                2016-12-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T17:29:05+08:00">
+                2016-12-16
               </time>
             
 
@@ -320,8 +314,8 @@ StringIO顾名思义就是在内存中读写str。
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/15/StringIO和BytesIO/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/StringIO和BytesIO/" itemprop="commentCount"></span>
+                <a href="/2016/12/16/datetime/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/datetime/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,15 +341,8 @@ StringIO顾名思义就是在内存中读写str。
       
 
       
-        <h2 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h2><p>很多时候，数据读写不一定是文件，也可以在内存中读写。</p>
-<p>StringIO顾名思义就是在内存中读写str。</p>
-<p>要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = StringIO()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'hello'</span>)</div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">' '</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'world!'</span>)</div><div class="line"><span class="number">6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(f.getvalue())</div><div class="line">hello world!</div></pre></td></tr></table></figure></p>
-<p>getvalue()方法用于获得写入后的str。</p>
-<h2 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h2><p>StringIO操作的只能是str，如果要操作二进制数据，就需要使用BytesIO。</p>
-<p>BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = BytesIO()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"><span class="number">6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(f.getvalue())</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure></p>
-<p>请注意，写入的不是str，而是经过UTF-8编码的bytes。</p>
-<p>和StringIO类似，可以用一个bytes初始化BytesIO，然后，像读文件一样读取：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = BytesIO(<span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>StringIO和BytesIO是在内存中操作str和bytes的方法，使得和读写文件具有一致的接口。</p>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'datetime 时间类'</span></div><div class="line"></div><div class="line"><span class="comment"># datetime模块还包含一个datetime类，</span></div><div class="line"><span class="comment"># 通过from datetime import datetime导入的才是datetime这个类。</span></div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"></div><div class="line"><span class="comment"># 当前时间</span></div><div class="line">now = datetime.now()</div><div class="line">print(now)</div><div class="line"></div><div class="line"><span class="comment"># 输入时间转换</span></div><div class="line">dt = datetime(<span class="number">2016</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">20</span>)</div><div class="line">print(dt)</div><div class="line"></div><div class="line"><span class="comment"># datetime转换为timestamp(时间戳)</span></div><div class="line"><span class="comment"># 时间转换为时间戳</span></div><div class="line">time = dt.timestamp()</div><div class="line">print(time)</div><div class="line"><span class="comment"># 注意Python的timestamp是一个浮点数。如果有小数位，小数位表示毫秒数。</span></div><div class="line"></div><div class="line"><span class="comment"># timestamp转换为datetime</span></div><div class="line"><span class="comment"># 时间戳转换为时间</span></div><div class="line">d = datetime.fromtimestamp(time)</div><div class="line">print(d)</div><div class="line"></div><div class="line"><span class="comment"># 转换为格林尼治时间</span></div><div class="line">utc = datetime.utcfromtimestamp(time)</div><div class="line">print(utc)</div><div class="line"></div><div class="line"><span class="comment"># str转换为datetime</span></div><div class="line">day = datetime.strptime(<span class="string">'2016-12-12 12:12:12'</span>, <span class="string">'%Y-%m-%d %H:%M:%S'</span>)</div><div class="line">print(day)</div><div class="line"></div><div class="line"><span class="comment"># datetime转换为str</span></div><div class="line">now = datetime.now()</div><div class="line">print(now.strftime(<span class="string">'%a,%b %d %H:%M'</span>))</div><div class="line"></div><div class="line"><span class="comment"># datetime加减</span></div><div class="line"><span class="comment"># 加减可以直接用+和-运算符，不过需要导入timedelta这个类</span></div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta,timezone</div><div class="line"></div><div class="line">now = datetime.now()</div><div class="line">print(now)</div><div class="line"><span class="comment"># 增加时间</span></div><div class="line">add = now + timedelta(hours=<span class="number">10</span>)</div><div class="line">print(add)</div><div class="line"><span class="comment"># 减时间</span></div><div class="line">jian = now - timedelta(days=<span class="number">1</span>)</div><div class="line">print(jian)</div><div class="line"></div><div class="line">add = now + timedelta(days=<span class="number">2</span>, hours=<span class="number">12</span>)</div><div class="line">print(add)</div><div class="line"></div><div class="line"><span class="comment">#本地时间转换为UTC时间</span></div><div class="line"><span class="comment">#一个datetime类型有一个时区属性tzinfo，</span></div><div class="line"><span class="comment"># 但是默认为None，所以无法区分这个datetime到底是哪个时区，除非强行给datetime设置一个时区</span></div><div class="line">tz_zone = timezone(timedelta(hours=<span class="number">8</span>))</div><div class="line">now = datetime.now()</div><div class="line">print(now)</div><div class="line"><span class="comment">#强制设置时区</span></div><div class="line">dt = now.replace(tzinfo=tz_zone)</div><div class="line">print(dt)</div><div class="line"></div><div class="line"><span class="comment">#时区转换</span></div><div class="line"><span class="comment">#我们可以先通过utcnow()拿到当前的UTC时间，再转换为任意时区的时间</span></div><div class="line"><span class="comment">#零时区</span></div><div class="line"></div><div class="line"><span class="comment">#时区转换的关键在于，拿到一个datetime时，要获知其正确的时区，然后强制设置时区，作为基准时间。</span></div><div class="line"><span class="comment"># 利用带时区的datetime，通过astimezone()方法，可以转换到任意时区。</span></div><div class="line">utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)</div><div class="line">print(utc_dt)</div><div class="line"></div><div class="line"><span class="comment"># astimezone()将转换时区为北京时间:</span></div><div class="line">bj = utc_dt.astimezone(timezone(timedelta(hours=<span class="number">8</span>)))</div><div class="line">print(bj)</div><div class="line"></div><div class="line">jp = utc_dt.astimezone(timezone(timedelta(hours=<span class="number">9</span>)))</div><div class="line">print(jp)</div></pre></td></tr></table></figure>
+<p>##小结<br> datetime表示的时间需要时区信息才能确定一个特定的时间，否则只能视为本地时间。<br> 如果要存储datetime，最佳方法是将其转换为timestamp再存储，因为timestamp的值与时区完全无关。</p>
 
       
     </div>
@@ -382,8 +369,8 @@ StringIO顾名思义就是在内存中读写str。
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/15/IO操作/" rel="next" title="IO操作">
-                <i class="fa fa-chevron-left"></i> IO操作
+              <a href="/2016/12/16/正则表达式/" rel="next" title="正则表达式">
+                <i class="fa fa-chevron-left"></i> 正则表达式
               </a>
             
           </div>
@@ -391,10 +378,6 @@ StringIO顾名思义就是在内存中读写str。
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/15/操作文件和目录/" rel="prev" title="操作文件和目录">
-                操作文件和目录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -409,10 +392,10 @@ StringIO顾名思义就是在内存中读写str。
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/15/StringIO和BytesIO/"
-     data-title="StringIO和BytesIO"
+        <div class="ds-share flat" data-thread-key="2016/12/16/datetime/"
+     data-title="datetime"
      data-content=""
-     data-url="910178199.github.io/2016/12/15/StringIO和BytesIO/">
+     data-url="910178199.github.io/2016/12/16/datetime/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -442,8 +425,8 @@ StringIO顾名思义就是在内存中读写str。
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/15/StringIO和BytesIO/"
-           data-title="StringIO和BytesIO" data-url="910178199.github.io/2016/12/15/StringIO和BytesIO/">
+      <div class="ds-thread" data-thread-key="2016/12/16/datetime/"
+           data-title="datetime" data-url="910178199.github.io/2016/12/16/datetime/">
       </div>
     
   </div>
@@ -467,17 +450,8 @@ StringIO顾名思义就是在内存中读写str。
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png"
@@ -527,22 +501,6 @@ StringIO顾名思义就是在内存中读写str。
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#StringIO"><span class="nav-number">1.</span> <span class="nav-text">StringIO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BytesIO"><span class="nav-number">2.</span> <span class="nav-text">BytesIO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
