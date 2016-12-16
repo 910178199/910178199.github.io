@@ -84,16 +84,15 @@
 
 
 
-<meta name="description" content="1234567891011121314try...except...finally...的错误处理机制，Python也不例外。抛出错误 raise# err_raise.pyclass FooError(ValueError):    passdef foo(s):    n = int(s)    if n==0:        raise FooError(&apos;invalid value: %s">
-<meta property="og:type" content="article">
-<meta property="og:title" content="错误处理">
-<meta property="og:url" content="910178199.github.io/2016/12/15/错误处理/index.html">
+<meta name="description" content="记录生活，记录成长。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mr.Robot">
+<meta property="og:url" content="910178199.github.io/page/2/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="1234567891011121314try...except...finally...的错误处理机制，Python也不例外。抛出错误 raise# err_raise.pyclass FooError(ValueError):    passdef foo(s):    n = int(s)    if n==0:        raise FooError(&apos;invalid value: %s">
-<meta property="og:updated_time" content="2016-12-15T01:50:34.256Z">
+<meta property="og:description" content="记录生活，记录成长。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="错误处理">
-<meta name="twitter:description" content="1234567891011121314try...except...finally...的错误处理机制，Python也不例外。抛出错误 raise# err_raise.pyclass FooError(ValueError):    passdef foo(s):    n = int(s)    if n==0:        raise FooError(&apos;invalid value: %s">
+<meta name="twitter:title" content="Mr.Robot">
+<meta name="twitter:description" content="记录生活，记录成长。">
 
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="910178199.github.io/2016/12/15/错误处理/"/>
+  <link rel="canonical" href="910178199.github.io/page/2/"/>
 
 
 
 
 
-  <title> 错误处理 | Mr.Robot </title>
+  <title> Mr.Robot </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -158,7 +157,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -250,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -261,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/15/错误处理/">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/12/面型对象高级编程之使用__slots__/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="布鲁斯李">
@@ -285,7 +286,10 @@
             
             
               
-                错误处理
+                
+                <a class="post-title-link" href="/2016/12/12/面型对象高级编程之使用__slots__/" itemprop="url">
+                  面型对象高级编程之使用__slots__
+                </a>
               
             
           </h1>
@@ -298,8 +302,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T09:49:50+08:00">
-                2016-12-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T15:56:19+08:00">
+                2016-12-12
               </time>
             
 
@@ -314,8 +318,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/15/错误处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/错误处理/" itemprop="commentCount"></span>
+                <a href="/2016/12/12/面型对象高级编程之使用__slots__/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/面型对象高级编程之使用__slots__/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -341,25 +345,21 @@
       
 
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>...<span class="keyword">except</span>...<span class="keyword">finally</span>...的错误处理机制，Python也不例外。</div><div class="line">抛出错误 <span class="keyword">raise</span></div><div class="line"></div><div class="line"><span class="comment"># err_raise.py</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooError</span><span class="params">(ValueError)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(s)</span>:</span></div><div class="line">    n = int(s)</div><div class="line">    <span class="keyword">if</span> n==<span class="number">0</span>:</div><div class="line">        <span class="keyword">raise</span> FooError(<span class="string">'invalid value: %s'</span> % s)</div><div class="line">    <span class="keyword">return</span> <span class="number">10</span> / n</div><div class="line"></div><div class="line">foo(<span class="string">'0'</span>)</div></pre></td></tr></table></figure>
-<p>小结</p>
-<p>Python内置的try…except…finally用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。</p>
-<p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
+        
+          
+            <h1 id="面型对象高级编程之使用-slots"><a href="#面型对象高级编程之使用-slots" class="headerlink" title="面型对象高级编程之使用 __slots__"></a>面型对象高级编程之使用 <code>__slots__</code></h1><h4 id="slots-1-为了给该实例绑定任何属性和方法-2-可以限制"><a href="#slots-1-为了给该实例绑定任何属性和方法-2-可以限制" class="headerlink" title="__slots__1.为了给该实例绑定任何属性和方法 2.可以限制"></a><code>__slots__</code>1.为了给该实例绑定任何属性和方法 2.可以限制</h4><h4 id="slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"><a href="#slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法" class="headerlink" title="__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"></a><code>__slots__</code>用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">()</span>:</span></div><div class="line">   	<span class="comment"># 用tuple定义允许绑定的属性名称</span></div><div class="line">   	__slots__ = (<span class="string">'name'</span>,<span class="string">'age'</span>)</div><div class="line"></div><div class="line">	s = Student()<span class="comment">#创建新实例</span></div><div class="line">	s.name = <span class="string">'Name'</span><span class="comment">#绑定属性</span></div><div class="line">	s.age = <span class="string">'Age'</span></div><div class="line">	<span class="comment">#由于s没用方法到参数中，所以报错</span></div><div class="line">	<span class="comment">#s.s = 's'</span></div><div class="line"></div><div class="line">	<span class="comment">#使用__slots__要注意，__slots__定义的属性仅对当前类实例起作用</span></div><div class="line">	<span class="comment"># ，对继承的子类是不起作用的：</span></div><div class="line"></div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Man</span><span class="params">(Student)</span>:</span></div><div class="line">   	<span class="keyword">pass</span></div><div class="line"></div><div class="line">	m = Man()</div><div class="line">	<span class="comment">#m新创建的属性</span></div><div class="line">	m.s = <span class="string">'a'</span></div><div class="line">	<span class="comment">#子类调用并不起作用，报错</span></div><div class="line">	print(m.s,m.name)</div></pre></td></tr></table></figure>
+<p>除非在子类中也定义<strong>slots</strong>，这样，子类实例允许定义的属性就是自身的<strong>slots</strong>加上父类的<strong>slots</strong>。</p>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
@@ -368,75 +368,30 @@
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/12/13/面向对象高级编程之使用元类/" rel="next" title="面向对象高级编程之使用元类">
-                <i class="fa fa-chevron-left"></i> 面向对象高级编程之使用元类
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/15/调试/" rel="prev" title="调试">
-                调试 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/12/15/错误处理/"
-     data-title="错误处理"
-     data-content=""
-     data-url="910178199.github.io/2016/12/15/错误处理/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
-    </div>
-  </div>
 
 
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/12/15/错误处理/"
-           data-title="错误处理" data-url="910178199.github.io/2016/12/15/错误处理/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -612,10 +567,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 
