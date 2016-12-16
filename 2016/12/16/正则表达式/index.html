@@ -84,16 +84,31 @@
 
 
 
-<meta name="description" content="面型对象高级编程之使用 __slots____slots__1.为了给该实例绑定任何属性和方法 2.可以限制__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法12345678910111213141516171819202122class Student():   	# 用tuple定义允许绑定的属性名称   	__slots__ = (&apos;name&apos;,&apos;age&apos;">
+<meta name="description" content="在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：
+‘00\d’可以匹配’007’，但无法匹配’00A’；
+‘\d\d\d’可以匹配’010’；
+‘\w\w\d’可以匹配’py3’；
+.可以匹配任意字符，所以：
+‘py.’可以匹配’pyc’、’pyo’、’py!’等等。要匹配变长的字符，在正则表达式中，用*表示任意个字符（包括0个），用+表示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面型对象高级编程之使用__slots__">
-<meta property="og:url" content="910178199.github.io/2016/12/12/面型对象高级编程之使用__slots__/index.html">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="910178199.github.io/2016/12/16/正则表达式/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="面型对象高级编程之使用 __slots____slots__1.为了给该实例绑定任何属性和方法 2.可以限制__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法12345678910111213141516171819202122class Student():   	# 用tuple定义允许绑定的属性名称   	__slots__ = (&apos;name&apos;,&apos;age&apos;">
-<meta property="og:updated_time" content="2016-12-13T01:02:24.187Z">
+<meta property="og:description" content="在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：
+‘00\d’可以匹配’007’，但无法匹配’00A’；
+‘\d\d\d’可以匹配’010’；
+‘\w\w\d’可以匹配’py3’；
+.可以匹配任意字符，所以：
+‘py.’可以匹配’pyc’、’pyo’、’py!’等等。要匹配变长的字符，在正则表达式中，用*表示任意个字符（包括0个），用+表示">
+<meta property="og:updated_time" content="2016-12-16T07:00:47.568Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面型对象高级编程之使用__slots__">
-<meta name="twitter:description" content="面型对象高级编程之使用 __slots____slots__1.为了给该实例绑定任何属性和方法 2.可以限制__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法12345678910111213141516171819202122class Student():   	# 用tuple定义允许绑定的属性名称   	__slots__ = (&apos;name&apos;,&apos;age&apos;">
+<meta name="twitter:title" content="正则表达式">
+<meta name="twitter:description" content="在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：
+‘00\d’可以匹配’007’，但无法匹配’00A’；
+‘\d\d\d’可以匹配’010’；
+‘\w\w\d’可以匹配’py3’；
+.可以匹配任意字符，所以：
+‘py.’可以匹配’pyc’、’pyo’、’py!’等等。要匹配变长的字符，在正则表达式中，用*表示任意个字符（包括0个），用+表示">
 
 
 
@@ -121,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="910178199.github.io/2016/12/12/面型对象高级编程之使用__slots__/"/>
+  <link rel="canonical" href="910178199.github.io/2016/12/16/正则表达式/"/>
 
 
 
 
 
-  <title> 面型对象高级编程之使用__slots__ | Mr.Robot </title>
+  <title> 正则表达式 | Mr.Robot </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/12/面型对象高级编程之使用__slots__/">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/16/正则表达式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="布鲁斯李">
@@ -285,7 +300,7 @@
             
             
               
-                面型对象高级编程之使用__slots__
+                正则表达式
               
             
           </h1>
@@ -298,8 +313,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T15:56:19+08:00">
-                2016-12-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T14:59:23+08:00">
+                2016-12-16
               </time>
             
 
@@ -314,8 +329,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/12/面型对象高级编程之使用__slots__/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/面型对象高级编程之使用__slots__/" itemprop="commentCount"></span>
+                <a href="/2016/12/16/正则表达式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/正则表达式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -341,8 +356,108 @@
       
 
       
-        <h1 id="面型对象高级编程之使用-slots"><a href="#面型对象高级编程之使用-slots" class="headerlink" title="面型对象高级编程之使用 __slots__"></a>面型对象高级编程之使用 <code>__slots__</code></h1><h4 id="slots-1-为了给该实例绑定任何属性和方法-2-可以限制"><a href="#slots-1-为了给该实例绑定任何属性和方法-2-可以限制" class="headerlink" title="__slots__1.为了给该实例绑定任何属性和方法 2.可以限制"></a><code>__slots__</code>1.为了给该实例绑定任何属性和方法 2.可以限制</h4><h4 id="slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"><a href="#slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法" class="headerlink" title="__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"></a><code>__slots__</code>用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">()</span>:</span></div><div class="line">   	<span class="comment"># 用tuple定义允许绑定的属性名称</span></div><div class="line">   	__slots__ = (<span class="string">'name'</span>,<span class="string">'age'</span>)</div><div class="line"></div><div class="line">	s = Student()<span class="comment">#创建新实例</span></div><div class="line">	s.name = <span class="string">'Name'</span><span class="comment">#绑定属性</span></div><div class="line">	s.age = <span class="string">'Age'</span></div><div class="line">	<span class="comment">#由于s没用方法到参数中，所以报错</span></div><div class="line">	<span class="comment">#s.s = 's'</span></div><div class="line"></div><div class="line">	<span class="comment">#使用__slots__要注意，__slots__定义的属性仅对当前类实例起作用</span></div><div class="line">	<span class="comment"># ，对继承的子类是不起作用的：</span></div><div class="line"></div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Man</span><span class="params">(Student)</span>:</span></div><div class="line">   	<span class="keyword">pass</span></div><div class="line"></div><div class="line">	m = Man()</div><div class="line">	<span class="comment">#m新创建的属性</span></div><div class="line">	m.s = <span class="string">'a'</span></div><div class="line">	<span class="comment">#子类调用并不起作用，报错</span></div><div class="line">	print(m.s,m.name)</div></pre></td></tr></table></figure>
-<p>除非在子类中也定义<strong>slots</strong>，这样，子类实例允许定义的属性就是自身的<strong>slots</strong>加上父类的<strong>slots</strong>。</p>
+        <p>在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：</p>
+<p>‘00\d’可以匹配’007’，但无法匹配’00A’；</p>
+<p>‘\d\d\d’可以匹配’010’；</p>
+<p>‘\w\w\d’可以匹配’py3’；</p>
+<p>.可以匹配任意字符，所以：</p>
+<p>‘py.’可以匹配’pyc’、’pyo’、’py!’等等。<br>要匹配变长的字符，在正则表达式中，用*表示任意个字符（包括0个），用+表示至少一个字符，用?表示0个或1个字符，用{n}表示n个字符，用{n,m}表示n-m个字符：</p>
+<p>来看一个复杂的例子：\d{3}\s+\d{3,8}。</p>
+<p>我们来从左到右解读一下：</p>
+<p>\d{3}表示匹配3个数字，例如’010’；</p>
+<p>\s可以匹配一个空格（也包括Tab等空白符），所以\s+表示至少有一个空格，例如匹配’ ‘，’ ‘等；</p>
+<p>\d{3,8}表示3-8个数字，例如’1234567’。</p>
+<p>综合起来，上面的正则表达式可以匹配以任意个空格隔开的带区号的电话号码。</p>
+<p>如果要匹配’010-12345’这样的号码呢？由于’-‘是特殊字符，在正则表达式中，要用’\’转义，所以，上面的正则是\d{3}-\d{3,8}。</p>
+<p>但是，仍然无法匹配’010 - 12345’，因为带有空格。所以我们需要更复杂的匹配方式。</p>
+<p>进阶</p>
+<p>要做更精确地匹配，可以用[]表示范围，比如：</p>
+<p>[0-9a-zA-Z_]可以匹配一个数字、字母或者下划线；</p>
+<p>[0-9a-zA-Z_]+可以匹配至少由一个数字、字母或者下划线组成的字符串，比如’a100’，’0_Z’，’Py3000’等等；</p>
+<p>[a-zA-Z_][0-9a-zA-Z_]*可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串，也就是Python合法的变量；</p>
+<p>[a-zA-Z_][0-9a-zA-Z_]{0, 19}更精确地限制了变量的长度是1-20个字符（前面1个字符+后面最多19个字符）。</p>
+<p>A|B可以匹配A或B，所以(P|p)ython可以匹配’Python’或者’python’。</p>
+<p>^表示行的开头，^\d表示必须以数字开头。</p>
+<p>$表示行的结束，\d$表示必须以数字结束。</p>
+<p>你可能注意到了，py也可以匹配’python’，但是加上^py$就变成了整行匹配，就只能匹配’py’了。</p>
+<p>re模块</p>
+<p>有了准备知识，我们就可以在Python中使用正则表达式了。Python提供re模块，包含所有正则表达式的功能。由于Python的字符串本身也用\转义，所以要特别注意：</p>
+<p>s = ‘ABC\-001’ # Python的字符串</p>
+<h1 id="对应的正则表达式字符串变成："><a href="#对应的正则表达式字符串变成：" class="headerlink" title="对应的正则表达式字符串变成："></a>对应的正则表达式字符串变成：</h1><h1 id="‘ABC-001’"><a href="#‘ABC-001’" class="headerlink" title="‘ABC-001’"></a>‘ABC-001’</h1><p>因此我们强烈建议使用Python的r前缀，就不用考虑转义的问题了：</p>
+<p>s = r’ABC-001’ # Python的字符串</p>
+<h1 id="对应的正则表达式字符串不变："><a href="#对应的正则表达式字符串不变：" class="headerlink" title="对应的正则表达式字符串不变："></a>对应的正则表达式字符串不变：</h1><h1 id="‘ABC-001’-1"><a href="#‘ABC-001’-1" class="headerlink" title="‘ABC-001’"></a>‘ABC-001’</h1><p>先看看如何判断正则表达式是否匹配：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import re<br>re.match(r’^\d{3}-\d{3,8}$’, ‘010-12345’)</p>
+<p><_sre.sre_match object;="" span="(0," 9),="" match="010-12345"><br>re.match(r’^\d{3}-\d{3,8}$’, ‘010 12345’)</_sre.sre_match></p>
+<p>match()方法判断是否匹配，如果匹配成功，返回一个Match对象，否则返回None。常见的判断方法就是：</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>test = ‘用户输入的字符串’<br>if re.match(r’正则表达式’, test):<br>    print(‘ok’)<br>else:<br>    print(‘failed’)<br>切分字符串</p>
+<p>用正则表达式切分字符串比用固定的字符更灵活，请看正常的切分代码：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>‘a b   c’.split(‘ ‘)<br>[‘a’, ‘b’, ‘’, ‘’, ‘c’]<br>嗯，无法识别连续的空格，用正则表达式试试：</p>
+<p>re.split(r’\s+’, ‘a b   c’)<br>[‘a’, ‘b’, ‘c’]<br>无论多少个空格都可以正常分割。加入,试试：</p>
+<p>re.split(r’[\s\,]+’, ‘a,b, c  d’)<br>[‘a’, ‘b’, ‘c’, ‘d’]<br>再加入;试试：</p>
+<p>re.split(r’[\s\,\;]+’, ‘a,b;; c  d’)<br>[‘a’, ‘b’, ‘c’, ‘d’]<br>如果用户输入了一组标签，下次记得用正则表达式来把不规范的输入转化成正确的数组。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>分组</p>
+<p>除了简单地判断是否匹配之外，正则表达式还有提取子串的强大功能。用()表示的就是要提取的分组（Group）。比如：</p>
+<p>^(\d{3})-(\d{3,8})$分别定义了两个组，可以直接从匹配的字符串中提取出区号和本地号码：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>m = re.match(r’^(\d{3})-(\d{3,8})$’, ‘010-12345’)<br>m</p>
+<p><_sre.sre_match object;="" span="(0," 9),="" match="010-12345"><br>m.group(0)<br>‘010-12345’<br>m.group(1)<br>‘010’<br>m.group(2)<br>‘12345’<br>如果正则表达式中定义了组，就可以在Match对象上用group()方法提取出子串来。</_sre.sre_match></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>注意到group(0)永远是原始字符串，group(1)、group(2)……表示第1、2、……个子串。</p>
+<p>提取子串非常有用。来看一个更凶残的例子：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>t = ‘19:05:30’<br>m = re.match(r’^(0[0-9]|1[0-9]|2[0-3]|[0-9])\:(0[0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|[0-9])\:(0[0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|[0-9])$’, t)<br>m.groups()<br>(‘19’, ‘05’, ‘30’)<br>这个正则表达式可以直接识别合法的时间。但是有些时候，用正则表达式也无法做到完全验证，比如识别日期：</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>‘^(0[1-9]|1[0-2]|[0-9])-(0[1-9]|1[0-9]|2[0-9]|3[0-1]|[0-9])$’<br>对于’2-30’，’4-31’这样的非法日期，用正则还是识别不了，或者说写出来非常困难，这时就需要程序配合识别了。</p>
+<p>贪婪匹配</p>
+<p>最后需要特别指出的是，正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。举例如下，匹配出数字后面的0：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>re.match(r’^(\d+)(0<em>)$’, ‘102300’).groups()<br>(‘102300’, ‘’)<br>由于\d+采用贪婪匹配，直接把后面的0全部匹配了，结果0</em>只能匹配空字符串了。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>必须让\d+采用非贪婪匹配（也就是尽可能少匹配），才能把后面的0匹配出来，加个?就可以让\d+采用非贪婪匹配：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>re.match(r’^(\d+?)(0*)$’, ‘102300’).groups()<br>(‘1023’, ‘00’)<br>编译</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>当我们在Python中使用正则表达式时，re模块内部会干两件事情：</p>
+<p>编译正则表达式，如果正则表达式的字符串本身不合法，会报错；</p>
+<p>用编译后的正则表达式去匹配字符串。</p>
+<p>如果一个正则表达式要重复使用几千次，出于效率的考虑，我们可以预编译该正则表达式，接下来重复使用时就不需要编译这个步骤了，直接匹配：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import re</p>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译:"></a>编译:</h1><p>re_telephone = re.compile(r’^(\d{3})-(\d{3,8})$’)</p>
+<h1 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h1><p>re_telephone.match(‘010-12345’).groups()<br>(‘010’, ‘12345’)<br>re_telephone.match(‘010-8086’).groups()<br>(‘010’, ‘8086’)<br>编译后生成Regular Expression对象，由于该对象自己包含了正则表达式，所以调用对应的方法时不用给出正则字符串。</p>
+</blockquote>
+</blockquote>
+</blockquote>
 
       
     </div>
@@ -369,15 +484,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/16/分布式进程/" rel="next" title="分布式进程">
+                <i class="fa fa-chevron-left"></i> 分布式进程
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/13/面向对象高级编程之使用元类/" rel="prev" title="面向对象高级编程之使用元类">
-                面向对象高级编程之使用元类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -392,10 +507,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/12/面型对象高级编程之使用__slots__/"
-     data-title="面型对象高级编程之使用__slots__"
+        <div class="ds-share flat" data-thread-key="2016/12/16/正则表达式/"
+     data-title="正则表达式"
      data-content=""
-     data-url="910178199.github.io/2016/12/12/面型对象高级编程之使用__slots__/">
+     data-url="910178199.github.io/2016/12/16/正则表达式/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -425,8 +540,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/12/面型对象高级编程之使用__slots__/"
-           data-title="面型对象高级编程之使用__slots__" data-url="910178199.github.io/2016/12/12/面型对象高级编程之使用__slots__/">
+      <div class="ds-thread" data-thread-key="2016/12/16/正则表达式/"
+           data-title="正则表达式" data-url="910178199.github.io/2016/12/16/正则表达式/">
       </div>
     
   </div>
@@ -520,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面型对象高级编程之使用-slots"><span class="nav-number">1.</span> <span class="nav-text">面型对象高级编程之使用 __slots__</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slots-1-为了给该实例绑定任何属性和方法-2-可以限制"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">__slots__1.为了给该实例绑定任何属性和方法 2.可以限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对应的正则表达式字符串变成："><span class="nav-number">1.</span> <span class="nav-text">对应的正则表达式字符串变成：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#‘ABC-001’"><span class="nav-number">2.</span> <span class="nav-text">‘ABC-001’</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对应的正则表达式字符串不变："><span class="nav-number">3.</span> <span class="nav-text">对应的正则表达式字符串不变：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#‘ABC-001’-1"><span class="nav-number">4.</span> <span class="nav-text">‘ABC-001’</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译"><span class="nav-number">5.</span> <span class="nav-text">编译:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用："><span class="nav-number">6.</span> <span class="nav-text">使用：</span></a></li></ol></div>
             
 
           </div>
