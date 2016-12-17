@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[base64]]></title>
+      <url>%2F2016%2F12%2F17%2Fbase64%2F</url>
+      <content type="text"><![CDATA[123456789101112131415161718192021# -*- coding=utf-8 -*-'base64'import base64#编码b = base64.b64encode(b'binary\x00string')print(base64.b64encode(b'i\xb7\x1d\xfb\xef\xff'))#标准的Base64编码后可能出现字符+和/，在URL中就不能直接作为参数，#所以又有一种"url safe"的base64编码，其实就是把字符+和/分别变成-和_print(base64.urlsafe_b64encode(b'i\xb7\x1d\xfb\xef\xff'))print(b)#解码print(base64.urlsafe_b64decode('abcd--__'))de= base64.b64decode(b)print(de)#小结# Base64是一种任意二进制到文本字符串的编码方法，常用于在URL、Cookie、网页中传输少量二进制数据。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[collections]]></title>
       <url>%2F2016%2F12%2F17%2Fcollections%2F</url>
       <content type="text"><![CDATA[collections是Python内建的一个集合模块，提供了许多有用的集合类。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253'collections集合模块，提供了许多有用的集合类。'from collections import namedtuplePoint = namedtuple('Point', ['x', 'y', 'z'])p = Point(1, 2, 3)print(p.x, p.y, p.z)# namedtuple：是一个函数，它用来创建一个自定义的tuple对象，# 并且规定了tuple元素的个数，并可以用属性而不是索引来引用tuple的某个元素。print(isinstance(p, Point))print(isinstance(p, tuple))# deque：是为了高效实现插入和删除操作的双向列表，适合用于队列和栈from collections import dequeq = deque(['a', 'b', 'c'])q.append('x')# 在头部添加q.appendleft('y')# deque除了实现list的append()和pop()外，# 还支持appendleft()和popleft()，这样就可以非常高效地往头部添加或删除元素。print(q)q.popleft()q.pop()print(q)# defaultdict：使用dict时，如OrderedDict果引用的Key不存在，就会抛出KeyError。# 如果希望key不存在时，返回一个默认值from collections import defaultdictdf = defaultdict(lambda: 'defa')df['a'] = 1print(df['a'])#不存在返回默认值print(df['b'])#OrderedDict：在dict中保持key的顺序from collections import OrderedDictd = dict([('a', 1), ('b', 2), ('c', 3)])print(d)#保持插入顺序o = OrderedDict([('a', 1), ('b', 2), ('c', 3)])print(o)#Counter：计数器from collections import Counter#统计出现的次数c = Counter()for x in '1233': c[x] = c[x]+1]]></content>
