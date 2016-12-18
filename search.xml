@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[strucr]]></title>
+      <url>%2F2016%2F12%2F18%2Fstruct%2F</url>
+      <content type="text"><![CDATA[Python提供了一个struct模块来解决bytes和其他二进制数据类型的转换。 12345678910'struct:解决bytes和其他二进制数据类型转换'import structprint(struct.pack('&gt;I', 10240099))# pack的第一个参数是处理指令，'&gt;I'的意思是：# &gt;表示字节顺序是big-endian，也就是网络序，I表示4字节无符号整数。# 后面的参数个数要和处理指令一致。print(struct.unpack('&gt;IH', b'\xf0\xf0\xf0\xf0\x80\x80'))]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[base64]]></title>
       <url>%2F2016%2F12%2F17%2Fbase64%2F</url>
       <content type="text"><![CDATA[123456789101112131415161718192021# -*- coding=utf-8 -*-'base64'import base64#编码b = base64.b64encode(b'binary\x00string')print(base64.b64encode(b'i\xb7\x1d\xfb\xef\xff'))#标准的Base64编码后可能出现字符+和/，在URL中就不能直接作为参数，#所以又有一种"url safe"的base64编码，其实就是把字符+和/分别变成-和_print(base64.urlsafe_b64encode(b'i\xb7\x1d\xfb\xef\xff'))print(b)#解码print(base64.urlsafe_b64decode('abcd--__'))de= base64.b64decode(b)print(de)#小结# Base64是一种任意二进制到文本字符串的编码方法，常用于在URL、Cookie、网页中传输少量二进制数据。]]></content>
