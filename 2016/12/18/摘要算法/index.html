@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：123456try:    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)    print(f.read())finally:    if f:        f.close()
-但是每次都这么写实在太繁">
+<meta name="description" content="Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。
+摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IO操作">
-<meta property="og:url" content="910178199.github.io/2016/12/15/IO操作/index.html">
+<meta property="og:title" content="简要算法">
+<meta property="og:url" content="910178199.github.io/2016/12/18/摘要算法/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：123456try:    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)    print(f.read())finally:    if f:        f.close()
-但是每次都这么写实在太繁">
-<meta property="og:updated_time" content="2016-12-15T02:09:27.683Z">
+<meta property="og:description" content="Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。
+摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全">
+<meta property="og:updated_time" content="2016-12-18T09:16:39.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IO操作">
-<meta name="twitter:description" content="由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：123456try:    f = open(&apos;/path/to/file&apos;, &apos;r&apos;)    print(f.read())finally:    if f:        f.close()
-但是每次都这么写实在太繁">
+<meta name="twitter:title" content="简要算法">
+<meta name="twitter:description" content="Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。
+摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="910178199.github.io/2016/12/15/IO操作/"/>
+  <link rel="canonical" href="910178199.github.io/2016/12/18/摘要算法/"/>
 
 
 
 
 
-  <title> IO操作 | Mr.Robot </title>
+  <title> 简要算法 | Mr.Robot </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/15/IO操作/">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/摘要算法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="布鲁斯李">
@@ -288,7 +288,7 @@
             
             
               
-                IO操作
+                简要算法
               
             
           </h1>
@@ -301,8 +301,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T09:52:38+08:00">
-                2016-12-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-18T16:14:10+08:00">
+                2016-12-18
               </time>
             
 
@@ -317,8 +317,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/15/IO操作/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/IO操作/" itemprop="commentCount"></span>
+                <a href="/2016/12/18/摘要算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/18/摘要算法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -344,19 +344,9 @@
       
 
       
-        <p>由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</div><div class="line">    print(f.read())</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">if</span> f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure></p>
-<p>但是每次都这么写实在太繁琐，所以，Python引入了with语句来自动帮我们调用close()方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    print(f.read())</div></pre></td></tr></table></figure></p>
-<p>这和前面的try … finally是一样的，但是代码更佳简洁，并且不必调用f.close()方法。</p>
-<p>调用read()会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用read(size)方法，每次最多读取size个字节的内容。另外，调用readline()可以每次读取一行内容，调用readlines()一次读取所有内容并按行返回list。因此，要根据需要决定怎么调用。</p>
-<p>如果文件很小，read()一次性读取最方便；如果不能确定文件大小，反复调用read(size)比较保险；如果是配置文件，调用readlines()最方便：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">    print(line.strip()) <span class="comment"># 把末尾的'\n'删掉</span></div></pre></td></tr></table></figure></p>
-<h2 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h2><p>前面讲的默认都是读取文本文件，并且是UTF-8编码的文本文件。要读取二进制文件，比如图片、视频等等，用’rb’模式打开文件即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'/Users/michael/test.jpg'</span>, <span class="string">'rb'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</div><div class="line"><span class="string">b'\xff\xd8\xff\xe1\x00\x18Exif\x00\x00...'</span> <span class="comment"># 十六进制表示的字节</span></div></pre></td></tr></table></figure></p>
-<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><p>要读取非UTF-8编码的文本文件，需要给open()函数传入encoding参数，例如，读取GBK编码的文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'/Users/michael/gbk.txt'</span>, <span class="string">'r'</span>, encoding=<span class="string">'gbk'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</div></pre></td></tr></table></figure></p>
-<p>‘测试’<br>遇到有些编码不规范的文件，你可能会遇到UnicodeDecodeError，因为在文本文件中可能夹杂了一些非法编码的字符。遇到这种情况，open()函数还接收一个errors参数，表示如果遇到编码错误后如何处理。最简单的方式是直接忽略：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'/Users/michael/gbk.txt'</span>, <span class="string">'r'</span>, encoding=<span class="string">'gbk'</span>, errors=<span class="string">'ignore'</span>)</div></pre></td></tr></table></figure></p>
-<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><p>写文件和读文件是一样的，唯一区别是调用open()函数时，传入标识符’w’或者’wb’表示写文本文件或写二进制文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'/Users/michael/test.txt'</span>, <span class="string">'w'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'Hello, world!'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</div></pre></td></tr></table></figure></p>
-<p>你可以反复调用write()来写入文件，但是务必要调用f.close()来关闭文件。当我们写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用close()方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用close()的后果是数据可能只写了一部分到磁盘，剩下的丢失了。所以，还是用with语句来得保险：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'/Users/michael/test.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">    f.write(<span class="string">'Hello, world!'</span>)</div></pre></td></tr></table></figure></p>
-<p>要写入特定编码的文本文件，请给open()函数传入encoding参数，将字符串自动转换成指定编码。</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>在Python中，文件读写是通过open()函数打开的文件对象完成的。使用with语句操作文件IO是个好习惯。</p>
-
+        <p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。<br>摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。</p>
+<p>摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全不同。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'haslib摘要算法'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line"><span class="comment"># MD5加密</span></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(<span class="string">'my name '</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">md5.update(<span class="string">'is lijian'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(md5.hexdigest())</div><div class="line"></div><div class="line"><span class="comment"># SHA1加密</span></div><div class="line">sha1 = hashlib.sha1()</div><div class="line">sha1.update(<span class="string">'my name'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">sha1.update(<span class="string">'is lijian'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(sha1.hexdigest())</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 练习</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_md5</span><span class="params">(password)</span>:</span></div><div class="line">    md5 = hashlib.md5()</div><div class="line">    md5.update(str(password).encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> md5.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line">print(calc_md5(<span class="string">'123456'</span>))</div><div class="line"></div><div class="line"><span class="comment"># 练习二：</span></div><div class="line">db = &#123;</div><div class="line">    <span class="string">'michael'</span>: <span class="string">'e10adc3949ba59abbe56e057f20f883e'</span>,</div><div class="line">    <span class="string">'bob'</span>: <span class="string">'878ef96e86145580c38c87f0410ad153'</span>,</div><div class="line">    <span class="string">'alice'</span>: <span class="string">'99b1c2188db85afee403b1536010c2c9'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(user, password)</span>:</span></div><div class="line">    <span class="keyword">if</span> calc_md5(password) == db[user]:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"></div><div class="line">print(login(<span class="string">'bob'</span>, <span class="string">'abc999'</span>))</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 练习三：</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_md5</span><span class="params">(age)</span>:</span></div><div class="line">    md5 = hashlib.md5()</div><div class="line">    md5.update(str(age).encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> md5.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(username, password)</span>:</span></div><div class="line">    r = get_md5(password + username + <span class="string">'the-Salt'</span>)</div><div class="line">    db[username] = r</div><div class="line">    <span class="keyword">return</span> r</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(username,password)</span>:</span></div><div class="line">    r = get_md5(password + username + <span class="string">'the-Salt'</span>)</div><div class="line">    <span class="keyword">if</span> db[username]== r:</div><div class="line">        print(<span class="string">'True'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'False'</span>)</div><div class="line"></div><div class="line"></div><div class="line">print(register(<span class="string">'123'</span>,<span class="string">'123'</span>))</div><div class="line">login(<span class="string">'123'</span>,<span class="string">'123'</span>)</div><div class="line"></div><div class="line">print(db)</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -382,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/15/调试/" rel="next" title="调试">
-                <i class="fa fa-chevron-left"></i> 调试
+              <a href="/2016/12/18/struct/" rel="next" title="strucr">
+                <i class="fa fa-chevron-left"></i> strucr
               </a>
             
           </div>
@@ -391,10 +381,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/15/StringIO和BytesIO/" rel="prev" title="StringIO和BytesIO">
-                StringIO和BytesIO <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -409,10 +395,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/15/IO操作/"
-     data-title="IO操作"
+        <div class="ds-share flat" data-thread-key="2016/12/18/摘要算法/"
+     data-title="简要算法"
      data-content=""
-     data-url="910178199.github.io/2016/12/15/IO操作/">
+     data-url="910178199.github.io/2016/12/18/摘要算法/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -442,8 +428,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/15/IO操作/"
-           data-title="IO操作" data-url="910178199.github.io/2016/12/15/IO操作/">
+      <div class="ds-thread" data-thread-key="2016/12/18/摘要算法/"
+           data-title="简要算法" data-url="910178199.github.io/2016/12/18/摘要算法/">
       </div>
     
   </div>
@@ -467,17 +453,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png"
@@ -527,22 +504,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制文件"><span class="nav-number">1.</span> <span class="nav-text">二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符编码"><span class="nav-number">2.</span> <span class="nav-text">字符编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文件"><span class="nav-number">3.</span> <span class="nav-text">写文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number"></span> <span class="nav-text">小结</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
