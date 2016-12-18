@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[itertools]]></title>
+      <url>%2F2016%2F12%2F18%2Fitertools%2F</url>
+      <content type="text"><![CDATA[Python的内建模块itertools提供了非常有用的用于操作迭代对象的函数。1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-'itertools 迭代工具'import itertools#无限迭代器：count(),#cycle()会把传入的一个序列无限重复下去#repeat()负责把一个元素无限重复下去，不过如果提供第二个参数就可以限定重复次数# n = itertools.count(1)# for n in n:# print(n)# cs = itertools.cycle('ABC') # 注意字符串也是序列的一种# for c in cs:# print(c)ns = itertools.repeat('A', 3)for n in ns: print(n)#通过takewhile()等函数根据条件判断来截取出一个有限的序列na = itertools.count(1)ns = itertools.takewhile(lambda x:x &lt;=10,na)print(list(ns))#chain()把一组迭代对象串联起来，形成一个更大的迭代器for n in itertools.chain('jqa','xyz'): print(n)#groupby()把迭代器中相邻的重复元素挑出来放在一起：#忽略大小写for key,group in itertools.groupby('AAAaCCcCDDDSDS',lambda x:x.upper()): print(key,list(group)) ##小结itertools模块提供的全部是处理迭代功能的函数，它们的返回值不是list，而是Iterator，只有用for循环迭代的时候才真正计算。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[简要算法]]></title>
       <url>%2F2016%2F12%2F18%2F%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95%2F</url>
       <content type="text"><![CDATA[Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。 摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全不同。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970# -*- coding=utf-8 -*-'haslib摘要算法'import hashlib# MD5加密md5 = hashlib.md5()md5.update('my name '.encode('utf-8'))md5.update('is lijian'.encode('utf-8'))print(md5.hexdigest())# SHA1加密sha1 = hashlib.sha1()sha1.update('my name'.encode('utf-8'))sha1.update('is lijian'.encode('utf-8'))print(sha1.hexdigest())# 练习def calc_md5(password): md5 = hashlib.md5() md5.update(str(password).encode('utf-8')) return md5.hexdigest()print(calc_md5('123456'))# 练习二：db = &#123; 'michael': 'e10adc3949ba59abbe56e057f20f883e', 'bob': '878ef96e86145580c38c87f0410ad153', 'alice': '99b1c2188db85afee403b1536010c2c9'&#125;def login(user, password): if calc_md5(password) == db[user]: return True else: return Falseprint(login('bob', 'abc999'))# 练习三：def get_md5(age): md5 = hashlib.md5() md5.update(str(age).encode('utf-8')) return md5.hexdigest()def register(username, password): r = get_md5(password + username + 'the-Salt') db[username] = r return rdef login(username,password): r = get_md5(password + username + 'the-Salt') if db[username]== r: print('True') else: print('False')print(register('123','123'))login('123','123')print(db)]]></content>
