@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[TCP编程]]></title>
+      <url>%2F2016%2F12%2F19%2FTCP%E7%BC%96%E7%A8%8B%2F</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[图形界面]]></title>
+      <url>%2F2016%2F12%2F19%2F%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%2F</url>
+      <content type="text"><![CDATA[Python支持多种图形界面的第三方库，包括： Tk wxWidgets Qt GTK 使用tk123456789101112131415161718192021222324252627282930313233'图形界面'from tkinter import *import tkinter.messagebox as messageboxclass Applicaction(Frame): def __init__(self, master=None): Frame.__init__(self, master) self.pack() self.createWidgets() def createWidgets(self): self.helloLabel = Label(self, text='Hello World') self.helloLabel.pack() self.quitButton = Button(self, text='Quit', command=self.quit) #pack()方法把Widget加入到父容器中 self.quitButton.pack() self.nameInput = Entry(self) self.nameInput.pack() self.alertButton = Button(self,text='发送',command = self.hello) self.alertButton.pack() def hello(self): name = self.nameInput.get() or 'world' messagebox.showinfo('Message','Hello, %s'%name)app = Applicaction()# 设置标题app.master.title('Hello World')# 主消息循环app.mainloop()]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[urllib]]></title>
       <url>%2F2016%2F12%2F19%2Furllib%2F</url>
       <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566'urllib提供url的相关方法'from urllib import request# 打开urlopenwith request.urlopen('https://api.douban.com/v2/book/2129650') as f: data = f.read() # 获取请求状态 print('Status:%s' % f.status) print('reason:%s' % f.reason) # 获取请求头 for k, v in f.getheaders(): print('%s %s' % (k, v)) # 获取请求内容 print('Data', data.decode('utf-8'))# 模拟浏览器发送GET请求req = request.Request('http://www.douban.com/')req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')with request.urlopen(req) as f: print('Status %s' % f.status, f.reason) for k, v in f.getheaders(): print('%s %s' % (k, v)) print('Data:', f.read().decode('utf-8'))#Post请求from urllib import request, parseprint('Login to weibo.cn...')email = input('Email: ')passwd = input('Password: ')login_data = parse.urlencode([ ('username', email), ('password', passwd), ('entry', 'mweibo'), ('client_id', ''), ('savestate', '1'), ('ec', ''), ('pagerefer', 'https://passport.weibo.cn/signin/welcome?entry=mweibo&amp;r=http%3A%2F%2Fm.weibo.cn%2F')])req = request.Request('https://passport.weibo.cn/sso/login')req.add_header('Origin', 'https://passport.weibo.cn')req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')req.add_header('Referer', 'https://passport.weibo.cn/signin/login?entry=mweibo&amp;res=wel&amp;wm=3349&amp;r=http%3A%2F%2Fm.weibo.cn%2F')with request.urlopen(req, data=login_data.encode('utf-8')) as f: print('Status:', f.status, f.reason) for k, v in f.getheaders(): print('%s: %s' % (k, v)) print('Data:', f.read().decode('utf-8'))#通过一个Proxy去访问网站，我们需要利用ProxyHandler来处理import urllibproxy_handler = urllib.request.ProxyHandler(&#123;'http': 'http://www.example.com:3128/'&#125;)proxy_auth_handler = urllib.request.ProxyBasicAuthHandler()proxy_auth_handler.add_password('realm', 'host', 'username', 'password')opener = urllib.request.build_opener(proxy_handler, proxy_auth_handler)with opener.open('http://www.example.com/login.html') as f: print('Status:', f.status, f.reason) for k, v in f.getheaders(): print('%s: %s' % (k, v)) print('Data:', f.read().decode('utf-8'))]]></content>
