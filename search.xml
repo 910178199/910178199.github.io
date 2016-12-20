@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[使用Web框架]]></title>
+      <url>%2F2016%2F12%2F20%2F%E4%BD%BF%E7%94%A8Web%E6%A1%86%E6%9E%B6%2F</url>
+      <content type="text"><![CDATA[12345678910111213141516171819202122232425262728'Flask简单使用'from flask import Flaskfrom flask import requestapp = Flask(__name__)@app.route('/',methods=['GET','POST'])def home(): return '&lt;h1&gt;Home&lt;h1&gt;'@app.route('/signin',methods=['GET'])def signin_from(): return '''&lt;form action="/signin" method="post"&gt; &lt;p&gt;&lt;input name="username"&gt;&lt;/p&gt; &lt;p&gt;&lt;input name="password" type="password"&gt;&lt;/p&gt; &lt;p&gt;&lt;button type="submit"&gt;Sign In&lt;/button&gt;&lt;/p&gt; &lt;/form&gt;'''@app.route('/signin',methods=['POST'])def signin(): #需要从request对象中读取表单内容 if request.form['username']=='admin' and request.form['password']=='password': return '&lt;h3&gt;Hello,admin&lt;/h3&gt;' return '&lt;h3&gt;Bad username or password&lt;h3/&gt;'if __name__=='__main__': app.run() 除了Flask，常见的Python Web框架还有： Django：全能型Web框架； web.py：一个小巧的Web框架； Bottle：和Flask类似的Web框架； Tornado：Facebook的开源异步Web框架。 小结有了Web框架，我们在编写Web应用时，注意力就从WSGI处理函数转移到URL+对应的处理函数，这样，编写Web App就更加简单了。 在编写URL处理函数时，除了配置URL外，从HTTP请求拿到用户数据也是非常重要的。Web框架都提供了自己的API来实现这些功能。Flask通过request.form[‘name’]来获取表单的内容。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[WSGI]]></title>
       <url>%2F2016%2F12%2F20%2FWSGI%2F</url>
       <content type="text"><![CDATA[WSGI接口 123456#客户端#返回HTTP响应的Body发送给浏览器def application(environ, start_response): start_response('200 OK', [('Content-Type', 'text/html')]) body = '&lt;h1&gt;Hello, %s!&lt;/h1&gt;' % (environ['PATH_INFO'][1:] or 'web') return [body.encode('utf-8')] 1234567891011#服务端# 从wsgiref模块导入:from wsgiref.simple_server import make_server# 导入我们自己编写的application函数:from user_WSGI_clicent import application# 创建一个服务器，IP地址为空，端口是8000，处理函数是application:httpd = make_server('', 8000, application)print('Serving HTTP on port 8000...')# 开始监听HTTP请求:httpd.serve_forever() 小结无论多么复杂的Web应用程序，入口都是一个WSGI处理函数。HTTP请求的所有输入信息都可以通过environ获得，HTTP响应的输出都可以通过start_response()加上函数返回值作为Body。 复杂的Web应用程序，光靠一个WSGI函数来处理还是太底层了，我们需要在WSGI之上再抽象出Web框架，进一步简化Web开发。]]></content>

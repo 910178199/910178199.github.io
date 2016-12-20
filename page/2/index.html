@@ -262,6 +262,129 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/contextlib/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="布鲁斯李">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Mr.Robot">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/18/contextlib/" itemprop="url">
+                  contextlib
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-18T20:18:13+08:00">
+                2016-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/18/contextlib/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/18/contextlib/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'contextlib:上下文库'</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Query</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Begin'</span>)</div><div class="line">        <span class="keyword">return</span> self</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_type, exc_value, traceback)</span>:</span></div><div class="line">        <span class="keyword">if</span> exc_type:</div><div class="line">            print(<span class="string">'Error'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">'End'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Query info about %s...'</span> % self.name)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">with</span> Query(<span class="string">'Bob'</span>) <span class="keyword">as</span> q:</div><div class="line">    q.query()</div><div class="line"></div><div class="line"><span class="comment"># ---简化版---</span></div><div class="line"><span class="comment"># 上下文管理器</span></div><div class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Quqry</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">quary</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Quary info about ...%s'</span> % self.name)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># @contextmanager使用上下文管理器</span></div><div class="line"><span class="meta">@contextmanager</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_quary</span><span class="params">(name)</span>:</span></div><div class="line">    print(<span class="string">'Begin'</span>)</div><div class="line">    q = Query(name)</div><div class="line">    <span class="keyword">yield</span> q</div><div class="line">    print(<span class="string">'End'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">with</span> create_quary(<span class="string">'HH'</span>) <span class="keyword">as</span> q:</div><div class="line">    q.query()</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 练习代码</span></div><div class="line"><span class="meta">@contextmanager</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">tag</span><span class="params">(name)</span>:</span></div><div class="line">    print(<span class="string">'&lt;%s&gt;'</span> % name)</div><div class="line">    <span class="keyword">yield</span></div><div class="line">    print(<span class="string">'&lt;%s&gt;'</span> % name)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">with</span> tag(<span class="string">'h1'</span>):</div><div class="line">    print(<span class="string">'hello,lijian'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 代码的执行顺序是：</span></div><div class="line"><span class="comment"># with语句首先执行yield之前的语句，因此打印出&lt;h1&gt;；</span></div><div class="line"><span class="comment"># yield调用会执行with语句内部的所有语句，因此打印出hello和world；</span></div><div class="line"><span class="comment"># 最后执行yield之后的语句，打印出&lt;/h1&gt;。</span></div><div class="line"><span class="comment"># 因此，@contextmanager让我们通过编写generator来简化上下文管理。</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 如果一个对象没有实现上下文，我们就不能把它用于with语句。</span></div><div class="line"><span class="comment"># 这个时候，可以用closing()来把该对象变为上下文对象。例如，用with语句使用urlopen()</span></div><div class="line"><span class="comment">#它的作用就是把任意对象变为上下文对象，并支持with语句。</span></div><div class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> closing</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"></div><div class="line"><span class="keyword">with</span> closing(urlopen(<span class="string">'https://www.python.org'</span>)) <span class="keyword">as</span> page:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> page:</div><div class="line">        print(line)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/itertools/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1488,133 +1611,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/15/多线程/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="布鲁斯李">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Mr.Robot">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/15/多线程/" itemprop="url">
-                  多线程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T10:48:26+08:00">
-                2016-12-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/15/多线程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/多线程/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>多任务可以由多进程完成，也可以由一个进程内的多线程完成。<br>Python的标准库提供了两个模块：_thread和threading，_thread是低级模块，threading是高级模块，对_thread进行了封装。绝大多数情况下使用threading这个高级模块。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'多线程'</span></div><div class="line"></div><div class="line"><span class="comment"># threading的使用</span></div><div class="line"><span class="keyword">import</span> time, threading</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'thrad %s running'</span> % threading.current_thread().name)</div><div class="line">    n = <span class="number">0</span></div><div class="line">    <span class="keyword">while</span> n &lt; <span class="number">5</span>:</div><div class="line">        n += <span class="number">1</span></div><div class="line">        print(<span class="string">'thread %s &gt;&gt;&gt; %s'</span> % (threading.current_thread().name, n))</div><div class="line">        time.sleep(<span class="number">1</span>)</div><div class="line">    print(<span class="string">'thread %s ended'</span> % threading.current_thread().name)</div><div class="line"></div><div class="line"></div><div class="line">print(<span class="string">'current thread %s'</span> % threading.current_thread().name)</div><div class="line"><span class="comment"># 子线程实例化</span></div><div class="line"><span class="comment"># 传入线程loop，传入线程名称（不传入也可以）</span></div><div class="line">t = threading.Thread(target=loop, name=<span class="string">'MyThread'</span>)</div><div class="line">t.start()</div><div class="line"><span class="comment"># 线程同步</span></div><div class="line">t.join()</div><div class="line">print(<span class="string">'thread %s ended'</span> % threading.current_thread().name)</div></pre></td></tr></table></figure>
-<h2 id="Lock线程锁"><a href="#Lock线程锁" class="headerlink" title="Lock线程锁"></a>Lock线程锁</h2><h3 id="不加线程锁的问题："><a href="#不加线程锁的问题：" class="headerlink" title="不加线程锁的问题："></a>不加线程锁的问题：</h3><h3 id="线程执行多条语句时，可能导致线程中断，从而导致多个线程把同一个对象的内容改乱了（导致内容不一致）"><a href="#线程执行多条语句时，可能导致线程中断，从而导致多个线程把同一个对象的内容改乱了（导致内容不一致）" class="headerlink" title="线程执行多条语句时，可能导致线程中断，从而导致多个线程把同一个对象的内容改乱了（导致内容不一致）"></a>线程执行多条语句时，可能导致线程中断，从而导致多个线程把同一个对象的内容改乱了（导致内容不一致）</h3><h3 id="threading-Lock-的好处？"><a href="#threading-Lock-的好处？" class="headerlink" title="threading.Lock()的好处？"></a>threading.Lock()的好处？</h3><h3 id="线程锁只有一个，无论多少线程，同一时刻最多只有一个线程持有该锁，所以，不会造成修改的冲突"><a href="#线程锁只有一个，无论多少线程，同一时刻最多只有一个线程持有该锁，所以，不会造成修改的冲突" class="headerlink" title="线程锁只有一个，无论多少线程，同一时刻最多只有一个线程持有该锁，所以，不会造成修改的冲突"></a>线程锁只有一个，无论多少线程，同一时刻最多只有一个线程持有该锁，所以，不会造成修改的冲突</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 假定这是你的银行存款:</span></div><div class="line">balance = <span class="number">0</span></div><div class="line"><span class="comment"># 线程锁</span></div><div class="line">lock = threading.Lock()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_it</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="comment"># 先存后取，结果应该为0:</span></div><div class="line">    <span class="keyword">global</span> balance</div><div class="line">    balance = balance + n</div><div class="line">    balance = balance - n</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_thread</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100000</span>):</div><div class="line">        <span class="comment"># 先获取锁</span></div><div class="line">        lock.acquire()</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            change_it(n)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            <span class="comment">#释放线程锁</span></div><div class="line">            lock.release()</div><div class="line"></div><div class="line">t1 = threading.Thread(target=run_thread, args=(<span class="number">5</span>,))</div><div class="line">t2 = threading.Thread(target=run_thread, args=(<span class="number">8</span>,))</div><div class="line">t1.start()</div><div class="line">t2.start()</div><div class="line">t1.join()</div><div class="line">t2.join()</div><div class="line">print(balance)</div></pre></td></tr></table></figure>
-<p>锁的好处就是确保了某段关键代码只能由一个线程从头到尾完整地执行，坏处当然也很多，首先是阻止了多线程并发执行，包含锁的某段代码实际上只能以单线程模式执行，效率就大大地下降了。其次，由于可以存在多个锁，不同的线程持有不同的锁，并试图获取对方持有的锁时，可能会造成死锁，导致多个线程全部挂起，既不能执行，也无法结束，只能靠操作系统强制终止。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1660,7 +1656,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
