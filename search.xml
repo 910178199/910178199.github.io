@@ -3,9 +3,16 @@
   
     
     <entry>
+      <title><![CDATA[UDP编程]]></title>
+      <url>%2F2016%2F12%2F20%2FUDP%E7%BC%96%E7%A8%8B%2F</url>
+      <content type="text"><![CDATA[1234567891011121314151617181920# -*- coding=utf-8 -*-'UDP服务端'import socket#socket.SOCK_DGRAM指定为UDP连接s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)#绑定端口s.bind(('127.0.0.1',9999))print('UDP Start ...')while True: #接受数据 data,addr = s.recvfrom(1024) print('Received from %s:%s'% addr) s.sendto(b'Hello ,%s !'% data,addr) 123456789101112131415# -*- coding=utf-8 -*-'UDP客户端'import sockets = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)for data in [b'A',b'B',b'C']: #发送数据 s.sendto(data,('127.0.0.1',9999)) #接受数据 print(s.recv(1024).decode('utf-8'))s.close()]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[TCP编程]]></title>
       <url>%2F2016%2F12%2F19%2FTCP%E7%BC%96%E7%A8%8B%2F</url>
-      <content type="text"></content>
+      <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-'TCP服务端'import socketimport timeimport threadings = socket.socket(socket.AF_INET,socket.SOCK_STREAM)#绑定端口s.bind(('127.0.0.1',9999))#监听s.listen(5)print('Wait ...')def tcplink(sock,addr): print('Accept new connection from %s:%s...' % addr) sock.send(b'Welcome') while True: data = sock.recv(1024) time.sleep(1) if not data or data.decode('utf-8') == 'exit': break sock.send(('Hello, %s!' % data.decode('utf-8')).encode('utf-8')) sock.close() print('Connection from %s:%s closed.' % addr)while True: #接受一个连接 sock,addr = s.accept() #创建新的线程来处理 t = threading.Thread(target=tcplink,args=(sock,addr)) t.start() 12345678910111213141516# -*- coding=utf-8 -*-import socket'客户端's = socket.socket(socket.AF_INET,socket.SOCK_STREAM)#连接服务器s.connect(('127.0.0.1',9999))#接受消息print('----',s.recv(1024).decode('utf-8'))for data in [b'A',b'B',b'C']: #发送数据 s.send(data) print(s.recv(1024).decode('utf-8'))s.send(b'exit')s.close()]]></content>
     </entry>
 
     

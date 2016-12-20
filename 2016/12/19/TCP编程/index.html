@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="记录生活，记录成长。">
+<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-&apos;TCP服务端&apos;import socketimport timeimport threadings = socket.socket(socket.AF_INET,socket.SOCK_STREAM)#绑定端口s.bind((&apos;127">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP编程">
 <meta property="og:url" content="910178199.github.io/2016/12/19/TCP编程/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="记录生活，记录成长。">
-<meta property="og:updated_time" content="2016-12-19T06:20:42.318Z">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-&apos;TCP服务端&apos;import socketimport timeimport threadings = socket.socket(socket.AF_INET,socket.SOCK_STREAM)#绑定端口s.bind((&apos;127">
+<meta property="og:updated_time" content="2016-12-20T01:06:50.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP编程">
-<meta name="twitter:description" content="记录生活，记录成长。">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-&apos;TCP服务端&apos;import socketimport timeimport threadings = socket.socket(socket.AF_INET,socket.SOCK_STREAM)#绑定端口s.bind((&apos;127">
 
 
 
@@ -341,7 +341,8 @@
       
 
       
-        
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'TCP服务端'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</div><div class="line"></div><div class="line"><span class="comment">#绑定端口</span></div><div class="line">s.bind((<span class="string">'127.0.0.1'</span>,<span class="number">9999</span>))</div><div class="line"></div><div class="line"><span class="comment">#监听</span></div><div class="line">s.listen(<span class="number">5</span>)</div><div class="line">print(<span class="string">'Wait ...'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">tcplink</span><span class="params">(sock,addr)</span>:</span></div><div class="line">    print(<span class="string">'Accept new connection from %s:%s...'</span> % addr)</div><div class="line">    sock.send(<span class="string">b'Welcome'</span>)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        data = sock.recv(<span class="number">1024</span>)</div><div class="line">        time.sleep(<span class="number">1</span>)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data <span class="keyword">or</span> data.decode(<span class="string">'utf-8'</span>) == <span class="string">'exit'</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        sock.send((<span class="string">'Hello, %s!'</span> % data.decode(<span class="string">'utf-8'</span>)).encode(<span class="string">'utf-8'</span>))</div><div class="line">    sock.close()</div><div class="line">    print(<span class="string">'Connection from %s:%s closed.'</span> % addr)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="comment">#接受一个连接</span></div><div class="line">    sock,addr = s.accept()</div><div class="line">    <span class="comment">#创建新的线程来处理</span></div><div class="line">    t = threading.Thread(target=tcplink,args=(sock,addr))</div><div class="line">    t.start()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"><span class="string">'客户端'</span></div><div class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</div><div class="line"><span class="comment">#连接服务器</span></div><div class="line">s.connect((<span class="string">'127.0.0.1'</span>,<span class="number">9999</span>))</div><div class="line"></div><div class="line"><span class="comment">#接受消息</span></div><div class="line">print(<span class="string">'----'</span>,s.recv(<span class="number">1024</span>).decode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b'A'</span>,<span class="string">b'B'</span>,<span class="string">b'C'</span>]:</div><div class="line">    <span class="comment">#发送数据</span></div><div class="line">    s.send(data)</div><div class="line">    print(s.recv(<span class="number">1024</span>).decode(<span class="string">'utf-8'</span>))</div><div class="line">s.send(<span class="string">b'exit'</span>)</div><div class="line">s.close()</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -376,6 +377,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/20/UDP编程/" rel="prev" title="UDP编程">
+                UDP编程 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -460,7 +465,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
