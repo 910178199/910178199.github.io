@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[MYSQL操作]]></title>
       <url>%2F2016%2F12%2F20%2FMYSQL%E6%93%8D%E4%BD%9C%2F</url>
-      <content type="text"></content>
+      <content type="text"><![CDATA[12345678910111213141516171819202122'MySql使用'import mysql.connectorconn = mysql.connector.connect( port=3306, user = 'root',password='password', charset='utf8',database='test')cursor = conn.cursor()#建表cursor.execute('create table user (id varchar(20) primary key, name varchar(20))')#插入数据cursor.execute('insert into user (id, name) values (%s, %s)', ['1', 'Michael'])print(cursor.rowcount)#提交事务conn.commit()cursor.close()#查询数据库内容cursor = conn.cursor()cursor.execute('select * from user where id = %s',('1',))v = cursor.fetchall()print(v)cursor.close()]]></content>
     </entry>
 
     

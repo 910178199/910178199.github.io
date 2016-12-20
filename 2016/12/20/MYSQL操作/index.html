@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="记录生活，记录成长。">
+<meta name="description" content="12345678910111213141516171819202122&apos;MySql使用&apos;import mysql.connectorconn = mysql.connector.connect( port=3306, user = &apos;root&apos;,password=&apos;password&apos;, charset=&apos;utf8&apos;,database=&apos;test&apos;)cursor = conn.cursor()#建表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MYSQL操作">
 <meta property="og:url" content="910178199.github.io/2016/12/20/MYSQL操作/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="记录生活，记录成长。">
-<meta property="og:updated_time" content="2016-12-20T02:07:04.588Z">
+<meta property="og:description" content="12345678910111213141516171819202122&apos;MySql使用&apos;import mysql.connectorconn = mysql.connector.connect( port=3306, user = &apos;root&apos;,password=&apos;password&apos;, charset=&apos;utf8&apos;,database=&apos;test&apos;)cursor = conn.cursor()#建表">
+<meta property="og:updated_time" content="2016-12-20T05:46:30.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MYSQL操作">
-<meta name="twitter:description" content="记录生活，记录成长。">
+<meta name="twitter:description" content="12345678910111213141516171819202122&apos;MySql使用&apos;import mysql.connectorconn = mysql.connector.connect( port=3306, user = &apos;root&apos;,password=&apos;password&apos;, charset=&apos;utf8&apos;,database=&apos;test&apos;)cursor = conn.cursor()#建表">
 
 
 
@@ -341,7 +341,7 @@
       
 
       
-        
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="string">'MySql使用'</span></div><div class="line"><span class="keyword">import</span> mysql.connector</div><div class="line"></div><div class="line">conn = mysql.connector.connect( port=<span class="number">3306</span>, user = <span class="string">'root'</span>,password=<span class="string">'password'</span>, charset=<span class="string">'utf8'</span>,database=<span class="string">'test'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line"><span class="comment">#建表</span></div><div class="line">cursor.execute(<span class="string">'create table user (id varchar(20) primary key, name varchar(20))'</span>)</div><div class="line"><span class="comment">#插入数据</span></div><div class="line">cursor.execute(<span class="string">'insert into user (id, name) values (%s, %s)'</span>, [<span class="string">'1'</span>, <span class="string">'Michael'</span>])</div><div class="line"></div><div class="line">print(cursor.rowcount)</div><div class="line"></div><div class="line"><span class="comment">#提交事务</span></div><div class="line">conn.commit()</div><div class="line">cursor.close()</div><div class="line"></div><div class="line"><span class="comment">#查询数据库内容</span></div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(<span class="string">'select * from user where id = %s'</span>,(<span class="string">'1'</span>,))</div><div class="line">v = cursor.fetchall()</div><div class="line">print(v)</div><div class="line">cursor.close()</div></pre></td></tr></table></figure>
       
     </div>
 
