@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[WSGI]]></title>
+      <url>%2F2016%2F12%2F20%2FWSGI%2F</url>
+      <content type="text"><![CDATA[WSGI接口 123456#客户端#返回HTTP响应的Body发送给浏览器def application(environ, start_response): start_response('200 OK', [('Content-Type', 'text/html')]) body = '&lt;h1&gt;Hello, %s!&lt;/h1&gt;' % (environ['PATH_INFO'][1:] or 'web') return [body.encode('utf-8')] 1234567891011#服务端# 从wsgiref模块导入:from wsgiref.simple_server import make_server# 导入我们自己编写的application函数:from user_WSGI_clicent import application# 创建一个服务器，IP地址为空，端口是8000，处理函数是application:httpd = make_server('', 8000, application)print('Serving HTTP on port 8000...')# 开始监听HTTP请求:httpd.serve_forever() 小结无论多么复杂的Web应用程序，入口都是一个WSGI处理函数。HTTP请求的所有输入信息都可以通过environ获得，HTTP响应的输出都可以通过start_response()加上函数返回值作为Body。 复杂的Web应用程序，光靠一个WSGI函数来处理还是太底层了，我们需要在WSGI之上再抽象出Web框架，进一步简化Web开发。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[MYSQL操作]]></title>
       <url>%2F2016%2F12%2F20%2FMYSQL%E6%93%8D%E4%BD%9C%2F</url>
       <content type="text"><![CDATA[12345678910111213141516171819202122'MySql使用'import mysql.connectorconn = mysql.connector.connect( port=3306, user = 'root',password='password', charset='utf8',database='test')cursor = conn.cursor()#建表cursor.execute('create table user (id varchar(20) primary key, name varchar(20))')#插入数据cursor.execute('insert into user (id, name) values (%s, %s)', ['1', 'Michael'])print(cursor.rowcount)#提交事务conn.commit()cursor.close()#查询数据库内容cursor = conn.cursor()cursor.execute('select * from user where id = %s',('1',))v = cursor.fetchall()print(v)cursor.close()]]></content>
