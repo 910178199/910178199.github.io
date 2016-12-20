@@ -262,6 +262,129 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/20/MYSQL操作/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="布鲁斯李">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Mr.Robot">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/20/MYSQL操作/" itemprop="url">
+                  MYSQL操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-20T10:07:04+08:00">
+                2016-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/20/MYSQL操作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/20/MYSQL操作/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/20/SQLite操作/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -348,7 +471,8 @@
         
           
             <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'SQLite使用'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sqlite3,os</div><div class="line"><span class="comment">#连接到SQLite数据库</span></div><div class="line"><span class="comment">#如果文件不存在，就创建test.db</span></div><div class="line">conn = sqlite3.connect(<span class="string">'test.db'</span>)</div><div class="line"><span class="comment">#创建一个Cursor</span></div><div class="line">cursor = conn.cursor()</div><div class="line"></div><div class="line"><span class="comment">#执行SQL语句创建表</span></div><div class="line">cursor.execute(<span class="string">'create table user (id varchar(20) primary key, name varchar(20))'</span>)</div><div class="line"></div><div class="line"><span class="comment">#插入条记录</span></div><div class="line">cursor.execute(<span class="string">'insert into user (id, name) values (\'1\', \'Michael\')'</span>)</div><div class="line"><span class="comment">#获取插入的行数</span></div><div class="line">print(cursor.rowcount)</div><div class="line"><span class="comment">#关闭cursor</span></div><div class="line">cursor.close()</div><div class="line"><span class="comment">#提交事务</span></div><div class="line">conn.commit()</div><div class="line"><span class="comment">#关闭连接</span></div><div class="line">conn.close()</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 查询表中信息</span></div><div class="line">conn = sqlite3.connect(<span class="string">'test.db'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line"><span class="comment">#查询语句</span></div><div class="line">cursor.execute(<span class="string">'select * from user where id = ?'</span>,(<span class="string">'1'</span>,))</div><div class="line"></div><div class="line"><span class="comment">#获得查询结果</span></div><div class="line">v =  cursor.fetchall()</div><div class="line">print(v)</div><div class="line"></div><div class="line">cursor.close()</div><div class="line">conn.close()</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#练习</span></div><div class="line">db_file = os.path.join(os.path.dirname(__file__), <span class="string">'test.db'</span>)</div><div class="line"><span class="keyword">if</span> os.path.isfile(db_file):</div><div class="line">    os.remove(db_file)</div><div class="line"></div><div class="line">conn = sqlite3.connect(<span class="string">'test.db'</span>)</div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(<span class="string">'create table user(id varchar(20) primary key,name varchar(20),score int)'</span>)</div><div class="line">cursor.execute(<span class="string">r"insert into user values ('A-001','A','96')"</span>)</div><div class="line">cursor.execute(<span class="string">r"insert into user values ('A-002','A','64')"</span>)</div><div class="line">cursor.execute(<span class="string">r"insert into user values ('A-003','A','76')"</span>)</div><div class="line"></div><div class="line">cursor.close()</div><div class="line">conn.commit()</div><div class="line">conn.close()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_score_in</span><span class="params">(low, high)</span>:</span></div><div class="line">    <span class="string">' 返回指定分数区间的名字，按分数从低到高排序 '</span></div><div class="line">    conn = sqlite3.connect(<span class="string">'test.db'</span>)</div><div class="line">    cursor =  conn.cursor()</div><div class="line">    cursor.execute(<span class="string">'select * from user where score&gt;=? and score &lt;=? order by score'</span>,(low,high))</div><div class="line">    v = cursor.fetchall()</div><div class="line">    print(v)</div><div class="line"></div><div class="line">    cursor.close()</div><div class="line">    conn.close()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    get_score_in(<span class="number">80</span>, <span class="number">95</span>)</div><div class="line">    get_score_in(<span class="number">60</span>, <span class="number">80</span>)</div><div class="line">    get_score_in(<span class="number">60</span>, <span class="number">100</span>)</div><div class="line">    print(<span class="string">'pass'</span>)</div></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>在Python中操作数据库时，要先导入数据库对应的驱动，然后，通过Connection对象和Cursor对象操作数据。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>SQLite的特点是轻量级、可嵌入，但不能承受高并发访问，适合桌面和移动应用</p>
+<p>在Python中操作数据库时，要先导入数据库对应的驱动，然后，通过Connection对象和Cursor对象操作数据。</p>
 <p>要确保打开的Connection对象和Cursor对象都正确地被关闭，否则，资源就会泄露。</p>
 <p>如何才能确保出错的情况下也关闭掉Connection对象和Cursor对象呢？请回忆try:…except:…finally:…的用法。</p>
 
@@ -1391,131 +1515,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/摘要算法/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="布鲁斯李">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Mr.Robot">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/18/摘要算法/" itemprop="url">
-                  简要算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-18T16:14:10+08:00">
-                2016-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/18/摘要算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/18/摘要算法/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。<br>摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。</p>
-<p>摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全不同。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'haslib摘要算法'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line"><span class="comment"># MD5加密</span></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(<span class="string">'my name '</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">md5.update(<span class="string">'is lijian'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(md5.hexdigest())</div><div class="line"></div><div class="line"><span class="comment"># SHA1加密</span></div><div class="line">sha1 = hashlib.sha1()</div><div class="line">sha1.update(<span class="string">'my name'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">sha1.update(<span class="string">'is lijian'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(sha1.hexdigest())</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 练习</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_md5</span><span class="params">(password)</span>:</span></div><div class="line">    md5 = hashlib.md5()</div><div class="line">    md5.update(str(password).encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> md5.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line">print(calc_md5(<span class="string">'123456'</span>))</div><div class="line"></div><div class="line"><span class="comment"># 练习二：</span></div><div class="line">db = &#123;</div><div class="line">    <span class="string">'michael'</span>: <span class="string">'e10adc3949ba59abbe56e057f20f883e'</span>,</div><div class="line">    <span class="string">'bob'</span>: <span class="string">'878ef96e86145580c38c87f0410ad153'</span>,</div><div class="line">    <span class="string">'alice'</span>: <span class="string">'99b1c2188db85afee403b1536010c2c9'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(user, password)</span>:</span></div><div class="line">    <span class="keyword">if</span> calc_md5(password) == db[user]:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"></div><div class="line">print(login(<span class="string">'bob'</span>, <span class="string">'abc999'</span>))</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 练习三：</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_md5</span><span class="params">(age)</span>:</span></div><div class="line">    md5 = hashlib.md5()</div><div class="line">    md5.update(str(age).encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> md5.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(username, password)</span>:</span></div><div class="line">    r = get_md5(password + username + <span class="string">'the-Salt'</span>)</div><div class="line">    db[username] = r</div><div class="line">    <span class="keyword">return</span> r</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(username,password)</span>:</span></div><div class="line">    r = get_md5(password + username + <span class="string">'the-Salt'</span>)</div><div class="line">    <span class="keyword">if</span> db[username]== r:</div><div class="line">        print(<span class="string">'True'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'False'</span>)</div><div class="line"></div><div class="line"></div><div class="line">print(register(<span class="string">'123'</span>,<span class="string">'123'</span>))</div><div class="line">login(<span class="string">'123'</span>,<span class="string">'123'</span>)</div><div class="line"></div><div class="line">print(db)</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1561,7 +1560,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
