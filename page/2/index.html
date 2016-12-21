@@ -262,6 +262,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/19/HTML解析/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="布鲁斯李">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/v.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Mr.Robot">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/19/HTML解析/" itemprop="url">
+                  HTML解析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-19T10:30:06+08:00">
+                2016-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/19/HTML解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/19/HTML解析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTML本质上是XML的子集，但是HTML的语法没有XML那么严格，所以不能用标准的DOM或SAX来解析HTML。</p>
+<p>好在Python提供了HTMLParser来非常方便地解析HTML，只需简单几行代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> html.parser <span class="keyword">import</span> HTMLParser</div><div class="line"><span class="keyword">from</span> html.entities <span class="keyword">import</span> name2codepoint</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHTMLParser</span><span class="params">(HTMLParser)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_starttag</span><span class="params">(self, tag, attrs)</span>:</span></div><div class="line">        print(<span class="string">'&lt;%s&gt;'</span> % tag)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_endtag</span><span class="params">(self, tag)</span>:</span></div><div class="line">        print(<span class="string">'&lt;/%s&gt;'</span> % tag)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_startendtag</span><span class="params">(self, tag, attrs)</span>:</span></div><div class="line">        print(<span class="string">'&lt;%s/&gt;'</span> % tag)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_data</span><span class="params">(self, data)</span>:</span></div><div class="line">        print(data)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_comment</span><span class="params">(self, data)</span>:</span></div><div class="line">        print(<span class="string">'&lt;!--'</span>, data, <span class="string">'--&gt;'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_entityref</span><span class="params">(self, name)</span>:</span></div><div class="line">        print(<span class="string">'&amp;%s;'</span> % name)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_charref</span><span class="params">(self, name)</span>:</span></div><div class="line">        print(<span class="string">'&amp;#%s;'</span> % name)</div><div class="line"></div><div class="line">parser = MyHTMLParser()</div><div class="line">parser.feed(<span class="string">'''&lt;html&gt;</span></div><div class="line">&lt;head&gt;&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;!-- test html parser --&gt;</div><div class="line">    &lt;p&gt;Some &lt;a href=\"#\"&gt;html&lt;/a&gt; HTML&amp;nbsp;tutorial...&lt;br&gt;END&lt;/p&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;''')</div></pre></td></tr></table></figure></p>
+<p>feed()方法可以多次调用，也就是不一定一次把整个HTML字符串都塞进去，可以一部分一部分塞进去。<br>特殊字符有两种，一种是英文表示的&nbsp;，一种是数字表示的&#1234;，这两种字符都可以通过Parser解析出来。</p>
+<h2 id="解析网页"><a href="#解析网页" class="headerlink" title="解析网页"></a>解析网页</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> html.parser <span class="keyword">import</span> HTMLParser</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHTMLParser</span><span class="params">(HTMLParser)</span>:</span></div><div class="line">    bool_title = <span class="keyword">False</span></div><div class="line">    bool_time = <span class="keyword">False</span></div><div class="line">    bool_place = <span class="keyword">False</span></div><div class="line">    bool_miss = <span class="keyword">True</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        HTMLParser.__init__(self)</div><div class="line">        self.message = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_starttag</span><span class="params">(self, tag, attrs)</span>:</span></div><div class="line">        <span class="keyword">if</span> len(attrs) &gt; <span class="number">0</span>:</div><div class="line">            <span class="keyword">if</span> tag == <span class="string">"h3"</span> <span class="keyword">and</span> attrs[<span class="number">0</span>][<span class="number">1</span>] == <span class="string">"event-title"</span>:</div><div class="line">                self.bool_title = <span class="keyword">True</span></div><div class="line">            <span class="keyword">elif</span> tag == <span class="string">"time"</span> <span class="keyword">and</span> attrs[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">"datetime"</span>:</div><div class="line">                self.bool_time = <span class="keyword">True</span></div><div class="line">            <span class="keyword">elif</span> tag == <span class="string">"span"</span> <span class="keyword">and</span> attrs[<span class="number">0</span>][<span class="number">1</span>] == <span class="string">"event-location"</span>:</div><div class="line">                self.bool_place = <span class="keyword">True</span></div><div class="line">            <span class="keyword">elif</span> tag == <span class="string">"h3"</span> <span class="keyword">and</span> attrs[<span class="number">0</span>][<span class="number">1</span>] == <span class="string">"widget-title just-missed"</span>:</div><div class="line">                self.bool_miss = <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_data</span><span class="params">(self, data)</span>:</span></div><div class="line">            <span class="keyword">if</span> self.bool_title <span class="keyword">and</span> self.bool_miss:</div><div class="line">                self.message.append([])</div><div class="line">                self.message[<span class="number">-1</span>].append(data)</div><div class="line">                self.bool_title = <span class="keyword">False</span></div><div class="line"></div><div class="line">            <span class="keyword">if</span> self.bool_time <span class="keyword">and</span> self.bool_miss:</div><div class="line">                self.message[<span class="number">-1</span>].append(data)</div><div class="line">                self.bool_time = <span class="keyword">False</span></div><div class="line"></div><div class="line">            <span class="keyword">if</span> self.bool_place <span class="keyword">and</span> self.bool_miss:</div><div class="line">                self.message[<span class="number">-1</span>].append(data)</div><div class="line">                self.bool_place = <span class="keyword">False</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">homework</span><span class="params">()</span>:</span></div><div class="line">    parser = MyHTMLParser()</div><div class="line">    html = requests.get(<span class="string">"https://www.python.org/events/python-events/"</span>).text</div><div class="line">    parser.feed(html)</div><div class="line">    a = parser.message</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> a:</div><div class="line">        print(x)</div><div class="line">        print(<span class="string">"====================================="</span>)</div><div class="line">        print(<span class="string">"会议名：%s   会议时间：%s   会议地点：%s"</span> % (x[<span class="number">0</span>], x[<span class="number">1</span>], x[<span class="number">2</span>]))</div><div class="line">        print(<span class="string">"\n"</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    homework()</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/XML解析/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1483,144 +1609,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/16/分布式进程/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="布鲁斯李">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/v.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Mr.Robot">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/16/分布式进程/" itemprop="url">
-                  分布式进程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T13:35:17+08:00">
-                2016-12-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/16/分布式进程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/分布式进程/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在Thread和Process中，应当优选Process，因为Process更稳定，而且，Process可以分布到多台机器上，而Thread最多只能分布到同一台机器的多个CPU上。</p>
-<p>Python的multiprocessing模块不但支持多进程，其中managers子模块还支持把多进程分布到多台机器上。一个服务进程可以作为调度者，将任务分布到其他多个进程中，依靠网络通信。</p>
-<p>举个例子：如果我们已经有一个通过Queue通信的多进程程序在同一台机器上运行，现在，由于处理任务的进程任务繁重，希望把发送任务的进程和处理任务的进程分布到两台机器上。怎么用分布式进程实现？</p>
-<p>原有的Queue可以继续使用，但是，通过managers模块把Queue通过网络暴露出去，就可以让其他机器的进程访问Queue了。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> random, time, queue</div><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> freeze_support</div><div class="line"><span class="keyword">from</span> multiprocessing.managers <span class="keyword">import</span> BaseManager</div><div class="line"></div><div class="line"><span class="comment"># 发送任务的队列:</span></div><div class="line">task_queue = queue.Queue()</div><div class="line"><span class="comment"># 接收结果的队列:</span></div><div class="line">result_queue = queue.Queue()</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 从BaseManager继承的QueueManager:</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">QueueManager</span><span class="params">(BaseManager)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">return_task_queue</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">global</span> task_queue</div><div class="line">    <span class="keyword">return</span> task_queue</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">return_result_queue</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">global</span> result_queue</div><div class="line">    <span class="keyword">return</span> result_queue</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 把两个Queue都注册到网络上, callable参数关联了Queue对象:</span></div><div class="line">    QueueManager.register(<span class="string">'get_task_queue'</span>, callable=return_task_queue)</div><div class="line">    QueueManager.register(<span class="string">'get_result_queue'</span>, callable=return_result_queue)</div><div class="line"></div><div class="line">    <span class="comment"># 绑定端口5000, 设置验证码'abc':</span></div><div class="line">    manager = QueueManager(address=(<span class="string">'127.0.0.1'</span>, <span class="number">5000</span>), authkey=<span class="string">b'abc'</span>)</div><div class="line">    <span class="comment"># 启动Queue:</span></div><div class="line">    manager.start()</div><div class="line">    <span class="comment"># 获得通过网络访问的Queue对象:</span></div><div class="line">    task = manager.get_task_queue()</div><div class="line">    result = manager.get_result_queue()</div><div class="line">    <span class="comment"># 放几个任务进去:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        n = random.randint(<span class="number">0</span>, <span class="number">10000</span>)</div><div class="line">        print(<span class="string">'Put task %d...'</span> % n)</div><div class="line">        task.put(n)</div><div class="line">    <span class="comment"># 从result队列读取结果:</span></div><div class="line">    print(<span class="string">'Try get results...'</span>)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        r = result.get(timeout=<span class="number">10</span>)</div><div class="line">        print(<span class="string">'Result: %s'</span> % r)</div><div class="line">    <span class="comment"># 关闭:</span></div><div class="line">    manager.shutdown()</div><div class="line">    print(<span class="string">'master exit.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    freeze_support()</div><div class="line">    test()</div></pre></td></tr></table></figure></p>
-<p>请注意，当我们在一台机器上写多进程程序时，创建的Queue可以直接拿来用，但是，在分布式多进程环境下，添加任务到Queue不可以直接对原始的task_queue进行操作，那样就绕过了QueueManager的封装，必须通过manager.get_task_queue()获得的Queue接口添加。</p>
-<p>然后，在另一台机器上启动任务进程（本机上启动也可以）：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># task_worker.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time, sys, queue</div><div class="line"><span class="keyword">from</span> multiprocessing.managers <span class="keyword">import</span> BaseManager</div><div class="line"></div><div class="line"><span class="comment"># 创建类似的QueueManager:</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">QueueManager</span><span class="params">(BaseManager)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="comment"># 由于这个QueueManager只从网络上获取Queue，所以注册时只提供名字:</span></div><div class="line">QueueManager.register(<span class="string">'get_task_queue'</span>)</div><div class="line">QueueManager.register(<span class="string">'get_result_queue'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 连接到服务器，也就是运行task_master.py的机器:</span></div><div class="line">server_addr = <span class="string">'127.0.0.1'</span></div><div class="line">print(<span class="string">'Connect to server %s...'</span> % server_addr)</div><div class="line"><span class="comment"># 端口和验证码注意保持与task_master.py设置的完全一致:</span></div><div class="line">m = QueueManager(address=(server_addr, <span class="number">5000</span>), authkey=<span class="string">b'abc'</span>)</div><div class="line"><span class="comment"># 从网络连接:</span></div><div class="line">m.connect()</div><div class="line"><span class="comment"># 获取Queue的对象:</span></div><div class="line">task = m.get_task_queue()</div><div class="line">result = m.get_result_queue()</div><div class="line"><span class="comment"># 从task队列取任务,并把结果写入result队列:</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        n = task.get(timeout=<span class="number">1</span>)</div><div class="line">        print(<span class="string">'run task %d * %d...'</span> % (n, n))</div><div class="line">        r = <span class="string">'%d * %d = %d'</span> % (n, n, n*n)</div><div class="line">        time.sleep(<span class="number">1</span>)</div><div class="line">        result.put(r)</div><div class="line">    <span class="keyword">except</span> Queue.Empty:</div><div class="line">        print(<span class="string">'task queue is empty.'</span>)</div><div class="line"><span class="comment"># 处理结束:</span></div><div class="line">print(<span class="string">'worker exit.'</span>)</div></pre></td></tr></table></figure></p>
-<p>任务进程要通过网络连接到服务进程，所以要指定服务进程的IP。</p>
-<p>现在，可以试试分布式进程的工作效果了。先启动task_master.py服务进程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">$ python3 task_master.py </div><div class="line">Put task 3411...</div><div class="line">Put task 1605...</div><div class="line">Put task 1398...</div><div class="line">Put task 4729...</div><div class="line">Put task 5300...</div><div class="line">Put task 7471...</div><div class="line">Put task 68...</div><div class="line">Put task 4219...</div><div class="line">Put task 339...</div><div class="line">Put task 7866...</div><div class="line">Try get results...</div><div class="line">task_master.py进程发送完任务后，开始等待result队列的结果。现在启动task_worker.py进程：</div><div class="line"></div><div class="line">$ python3 task_worker.py</div><div class="line">Connect to server 127.0.0.1...</div><div class="line">run task 3411 * 3411...</div><div class="line">run task 1605 * 1605...</div><div class="line">run task 1398 * 1398...</div><div class="line">run task 4729 * 4729...</div><div class="line">run task 5300 * 5300...</div><div class="line">run task 7471 * 7471...</div><div class="line">run task 68 * 68...</div><div class="line">run task 4219 * 4219...</div><div class="line">run task 339 * 339...</div><div class="line">run task 7866 * 7866...</div><div class="line">worker exit.</div><div class="line">task_worker.py进程结束，在task_master.py进程中会继续打印出结果：</div><div class="line"></div><div class="line">Result: 3411 * 3411 = 11634921</div><div class="line">Result: 1605 * 1605 = 2576025</div><div class="line">Result: 1398 * 1398 = 1954404</div><div class="line">Result: 4729 * 4729 = 22363441</div><div class="line">Result: 5300 * 5300 = 28090000</div><div class="line">Result: 7471 * 7471 = 55815841</div><div class="line">Result: 68 * 68 = 4624</div><div class="line">Result: 4219 * 4219 = 17799961</div><div class="line">Result: 339 * 339 = 114921</div><div class="line">Result: 7866 * 7866 = 61873956</div></pre></td></tr></table></figure></p>
-<p>这个简单的Master/Worker模型有什么用？其实这就是一个简单但真正的分布式计算，把代码稍加改造，启动多个worker，就可以把任务分布到几台甚至几十台机器上，比如把计算n*n的代码换成发送邮件，就实现了邮件队列的异步发送。</p>
-<p>Queue对象存储在哪？注意到task_worker.py中根本没有创建Queue的代码，所以，Queue对象存储在task_master.py进程中：</p>
-<p><img src="http://www.liaoxuefeng.com/files/attachments/001431929951799fda95088b12c48e2bd44b9157b8050c9000/l" alt=""> </p>
-<p>而Queue之所以能通过网络访问，就是通过QueueManager实现的。由于QueueManager管理的不止一个Queue，所以，要给每个Queue的网络调用接口起个名字，比如get_task_queue。</p>
-<p>authkey有什么用？这是为了保证两台机器正常通信，不被其他机器恶意干扰。如果task_worker.py的authkey和task_master.py的authkey不一致，肯定连接不上。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Python的分布式进程接口简单，封装良好，适合需要把繁重任务分布到多台机器的环境下。</p>
-<p>注意Queue的作用是用来传递任务和接收结果，每个任务的描述数据量要尽量小。比如发送一个处理日志文件的任务，就不要发送几百兆的日志文件本身，而是发送日志文件存放的完整路径，由Worker进程再去共享的磁盘上读取文件。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1666,7 +1654,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

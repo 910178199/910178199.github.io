@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[async/await]]></title>
+      <url>%2F2016%2F12%2F21%2Fasync-await%2F</url>
+      <content type="text"><![CDATA[用asyncio提供的@asyncio.coroutine可以把一个generator标记为coroutine类型，然后在coroutine内部用yield from调用另一个coroutine实现异步操作。 从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读。async/await: 把@asyncio.coroutine替换为async；把yield from替换为await。12345678910111213141516171819202122import asyncio@asyncio.coroutinedef hello(): print("Hello world!") r = yield from asyncio.sleep(1) print("Hello again!")loop = asyncio.get_event_loop()loop.run_until_complete(hello())# 使用async/awaitasync def hello(): print("Hello world!") r = await asyncio.sleep(1) print("Hello again!")loop = asyncio.get_event_loop()loop.run_until_complete(hello())loop.close()]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[使用模板]]></title>
       <url>%2F2016%2F12%2F20%2F%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%2F</url>
       <content type="text"><![CDATA[12345678910111213141516171819202122232425from flask import Flask, request, render_templateapp = Flask(__name__)@app.route('/', methods=['GET', 'POST'])def home(): return render_template('home.html')@app.route('/signin', methods=['GET'])def signin_form(): return render_template('form.html')@app.route('/signin', methods=['POST'])def signin(): username = request.form['username'] password = request.form['password'] if username == 'admin' and password == 'password': return render_template('signin-ok.html', username=username) return render_template('form.html', message='Bad username or password', username=username)if __name__=='__main__': app.run() 12345678910111213141516171819我们用&#123;&#123; name &#125;&#125;表示一个需要替换的变量。很多时候，还需要循环、条件判断等指令语句，在Jinja2中，用&#123;% ... %&#125;表示指令。比如循环输出页码：&#123;% for i in page_list %&#125; &lt;a href="/page/&#123;&#123; i &#125;&#125;"&gt;&#123;&#123; i &#125;&#125;&lt;/a&gt;&#123;% endfor %&#125;如果page_list是一个list：[1, 2, 3, 4, 5]，上面的模板将输出5个超链接。除了Jinja2，常见的模板还有：Mako：用&lt;% ... %&gt;和$&#123;xxx&#125;的一个模板；Cheetah：也是用&lt;% ... %&gt;和$&#123;xxx&#125;的一个模板；Django：Django是一站式框架，内置一个用&#123;% ... %&#125;和&#123;&#123; xxx &#125;&#125;的模板。## 用templates不要变。其它的html模板文件全都放在这个文件夹里，flask会自动到这个文件夹里找模板。]]></content>
