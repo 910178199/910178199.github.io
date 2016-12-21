@@ -234,6 +234,13 @@
 
     
     <entry>
+      <title><![CDATA[异常处理]]></title>
+      <url>%2F2016%2F12%2F13%2F%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%2F</url>
+      <content type="text"><![CDATA[1234567891011121314try...except...finally...的错误处理机制，Python也不例外。抛出错误 raise# err_raise.pyclass FooError(ValueError): passdef foo(s): n = int(s) if n==0: raise FooError('invalid value: %s' % s) return 10 / nfoo('0') 小结Python内置的try…except…finally用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。 程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[面向对象高级编程之使用元类]]></title>
       <url>%2F2016%2F12%2F13%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BD%BF%E7%94%A8%E5%85%83%E7%B1%BB%2F</url>
       <content type="text"><![CDATA[type()动态语言和静态语言最大的不同，就是函数和类的定义，不是编译时定义的，而是运行时动态创建的。 比方说我们要定义一个Hello的class，就写一个hello.py模块：123class Hello(object): def hello(self, name='world'): print('Hello, %s.' % name) 当Python解释器载入hello模块时，就会依次执行该模块的所有语句，执行结果就是动态创建出一个Hello的class对象，测试如下： 12345678&gt;&gt;&gt; from hello import Hello&gt;&gt;&gt; h = Hello()&gt;&gt;&gt; h.hello()Hello, world.&gt;&gt;&gt; print(type(Hello))&lt;class 'type'&gt;&gt;&gt;&gt; print(type(h))&lt;class 'hello.Hello'&gt; type()函数可以查看一个类型或变量的类型，Hello是一个class，它的类型就是type，而h是一个实例，它的类型就是class Hello。 我们说class的定义是运行时动态创建的，而创建class的方法就是使用type()函数。 type()函数既可以返回一个对象的类型，又可以创建出新的类型，比如，我们可以通过type()函数创建出Hello类，而无需通过class Hello(object)…的定义：1234567891011&gt;&gt;&gt; def fn(self, name='world'): # 先定义函数... print('Hello, %s.' % name)...&gt;&gt;&gt; Hello = type('Hello', (object,), dict(hello=fn)) # 创建Hello class&gt;&gt;&gt; h = Hello()&gt;&gt;&gt; h.hello()Hello, world.&gt;&gt;&gt; print(type(Hello))&lt;class 'type'&gt;&gt;&gt;&gt; print(type(h))&lt;class '__main__.Hello'&gt; 要创建一个class对象，type()函数依次传入3个参数： class的名称；继承的父类集合，注意Python支持多重继承，如果只有一个父类，别忘了tuple的单元素写法；class的方法名称与函数绑定，这里我们把函数fn绑定到方法名hello上。通过type()函数创建的类和直接写class是完全一样的，因为Python解释器遇到class定义时，仅仅是扫描一下class定义的语法，然后调用type()函数创建出class。 正常情况下，我们都用class Xxx…来定义类，但是，type()函数也允许我们动态创建出类来，也就是说，动态语言本身支持运行期动态创建类，这和静态语言有非常大的不同，要在静态语言运行期创建类，必须构造源代码字符串再调用编译器，或者借助一些工具生成字节码实现，本质上都是动态编译，会非常复杂。 metaclass除了使用type()动态创建类以外，要控制类的创建行为，还可以使用metaclass。 metaclass，直译为元类，简单的解释就是： 当我们定义了类以后，就可以根据这个类创建出实例，所以：先定义类，然后创建实例。 但是如果我们想创建出类呢？那就必须根据metaclass创建出类，所以：先定义metaclass，然后创建类。 连接起来就是：先定义metaclass，就可以创建类，最后创建实例。 所以，metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。 metaclass是Python面向对象里最难理解，也是最难使用的魔术代码。正常情况下，你不会碰到需要使用metaclass的情况，所以，以下内容看不懂也没关系，因为基本上你不会用到。 我们先看一个简单的例子，这个metaclass可以给我们自定义的MyList增加一个add方法： 定义ListMetaclass，按照默认习惯，metaclass的类名总是以Metaclass结尾，以便清楚地表示这是一个metaclass：12345# metaclass是类的模板，所以必须从`type`类型派生：class ListMetaclass(type): def __new__(cls, name, bases, attrs): attrs['add'] = lambda self, value: self.append(value) return type.__new__(cls, name, bases, attrs) 有了ListMetaclass，我们在定义类的时候还要指示使用ListMetaclass来定制类，传入关键字参数metaclass：12class MyList(list, metaclass=ListMetaclass): pass 当我们传入关键字参数metaclass时，魔术就生效了，它指示Python解释器在创建MyList时，要通过ListMetaclass.new()来创建，在此，我们可以修改类的定义，比如，加上新的方法，然后，返回修改后的定义。 new()方法接收到的参数依次是： 当前准备创建的类的对象； 类的名字； 类继承的父类集合； 类的方法集合。 测试一下MyList是否可以调用add()方法： 1234&gt;&gt;&gt; L = MyList()&gt;&gt;&gt; L.add(1)&gt;&gt; L[1]]]></content>
@@ -241,9 +248,149 @@
 
     
     <entry>
+      <title><![CDATA[枚举]]></title>
+      <url>%2F2016%2F12%2F12%2F%E6%9E%9A%E4%B8%BE%2F</url>
+      <content type="text"><![CDATA[123456789101112131415161718192021222324'枚举类'from enum import Enum,unique#枚举遍历Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))for name,N in Month.__members__.items(): print(name,'==&gt;',N,',',N.value)#unique保证没有重复值@uniqueclass Weekday(Enum): Sun = 0 # Sun的value被设定为0 Mon = 1 Tue = 2 Wed = 3 Thu = 4 Fri = 5 Sat = 6print(Weekday.Sat)print(Weekday(1)) 可见，既可以用成员名称引用枚举常量，又可以直接根据value的值获得枚举常量。 小结Enum可以把一组相关常量定义在一个class中，且class不可变，而且成员可以直接比较。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[定制类]]></title>
+      <url>%2F2016%2F12%2F12%2F%E5%AE%9A%E5%88%B6%E7%B1%BB%2F</url>
+      <content type="text"><![CDATA[str：字符串 iter：如果一个类想被用于for … in循环，类似list或tuple那样，就必须实现一个iter()方法，该方法返回一个迭代对象 getitem：要表现得像list那样按照下标取出元素，需要实现getitem()方法 getattr：Python还有另一个机制，那就是写一个getattr()方法，动态返回一个属性 call：可以直接对实例进行调用，可以自己调自己 -- coding=utf-8 --‘定制类’12345678910111213141516171819202122232425262728293031323334353637383940class Student(object): def __init__(self,name): self.name = name def __str__(self): return '结果：%s'% self.nameprint Student('name')#无论API怎么变，SDK都可以根据URL实现完全动态的调用，而且，不随API的增加而改变！class Chain(object): def __init__(self, path=''): self._path = path def __getattr__(self, path): return Chain('%s/%s' % (self._path, path)) def __str__(self): return self._path def __call__(self, name): return Chain('%s/%s' % (self._path, name)) __repr__ = __str__print Chain().status('123').user.timeline.list#callable判断是否可调用print callable(Chain())class Student(object): def __init__(self,name): self.name = name def __call__(self): print 'call',self.names = Student('Name')s() 小结Python的class允许定义许多定制方法，可以让我们非常方便地生成特定的类。本节介绍的是最常用的几个定制方法，还有很多可定制的方法，请参考Python的官方文档。https://docs.python.org/3/reference/datamodel.html#special-method-names]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[多重继承]]></title>
+      <url>%2F2016%2F12%2F12%2F%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%2F</url>
+      <content type="text"><![CDATA[MixIn 在设计类的继承关系时，通常，主线都是单一继承下来的，例如，Ostrich继承自Bird。但是，如果需要“混入”额外的功能，通过多重继承就可以实现，比如，让Ostrich除了继承自Bird外，再同时继承Runnable。这种设计通常称之为MixIn。 为了更好地看出继承关系，我们把Runnable和Flyable改为RunnableMixIn和FlyableMixIn。类似的，你还可以定义出肉食动物CarnivorousMixIn和植食动物HerbivoresMixIn，让某个动物同时拥有好几个MixIn：12class Dog(Mammal, RunnableMixIn, CarnivorousMixIn): pass 这样一来，我们不需要复杂而庞大的继承链，只要选择组合不同的类的功能，就可以快速构造出所需的子类。 小结由于Python允许使用多重继承，因此，MixIn就是一种常见的设计。 只允许单一继承的语言（如Java）不能使用MixIn的设计。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[使用@property]]></title>
+      <url>%2F2016%2F12%2F12%2F%E4%BD%BF%E7%94%A8-property%2F</url>
+      <content type="text"><![CDATA[Python内置的@property装饰器就是负责把一个方法变成属性调用的：12345678910111213class Student(object): @property def score(self): return self._score @score.setter def score(self, value): if not isinstance(value, int): raise ValueError('score must be an integer!') if value &lt; 0 or value &gt; 100: raise ValueError('score must between 0 ~ 100!') self._score = value @property的实现比较复杂，我们先考察如何使用。把一个getter方法变成属性，只需要加上@property就可以了，此时，@property本身又创建了另一个装饰器@score.setter，负责把一个setter方法变成属性赋值，于是，我们就拥有一个可控的属性操作： s = Student()s.score = 60 # OK，实际转化为s.set_score(60)s.score # OK，实际转化为s.get_score()60s.score = 9999Traceback (most recent call last): …ValueError: score must between 0 ~ 100!注意到这个神奇的@property，我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。 ‘property的用法：负责把一个方法变成一个属性来调用 set,get’12345678910111213141516171819202122class Student(): @property def scroe(self): return self._scroe @scroe.setter def scroe(self,value): if not isinstance(value,int): raise ValueError('scroe must be an int') if value&lt;0 or value&gt;100: raise ValueError('1~100') self._score = values = Student()#相当于sets.scroe = 10#相当于getprint s.scroes.scroe = 9999print s.scroe 小结@property广泛应用在类的定义中，可以让调用者写出简短的代码，同时保证对参数进行必要的检查，这样，程序运行时就减少了出错的可能性。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[面型对象高级编程之使用__slots__]]></title>
       <url>%2F2016%2F12%2F12%2F%E9%9D%A2%E5%9E%8B%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BD%BF%E7%94%A8__slots__%2F</url>
       <content type="text"><![CDATA[面型对象高级编程之使用 __slots____slots__1.为了给该实例绑定任何属性和方法 2.可以限制__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法12345678910111213141516171819202122class Student(): # 用tuple定义允许绑定的属性名称 __slots__ = ('name','age') s = Student()#创建新实例 s.name = 'Name'#绑定属性 s.age = 'Age' #由于s没用方法到参数中，所以报错 #s.s = 's' #使用__slots__要注意，__slots__定义的属性仅对当前类实例起作用 # ，对继承的子类是不起作用的： class Man(Student): pass m = Man() #m新创建的属性 m.s = 'a' #子类调用并不起作用，报错 print(m.s,m.name) 除非在子类中也定义slots，这样，子类实例允许定义的属性就是自身的slots加上父类的slots。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[实例属性和类属性]]></title>
+      <url>%2F2016%2F12%2F11%2F%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B1%BB%E5%B1%9E%E6%80%A7%2F</url>
+      <content type="text"><![CDATA[由于Python是动态语言，根据类创建的实例可以任意绑定属性。 给实例绑定属性的方法是通过实例变量，或者通过self变量：123456class Student(object): def __init__(self, name): self.name = names = Student('Bob')s.score = 90 但是，如果Student类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归Student类所有：12class Student(object): name = 'Student' 当我们定义了一个类属性后，这个属性虽然归类所有，但类的所有实例都可以访问到。来测试一下： class Student(object):… name = ‘Student’…s = Student() # 创建实例sprint(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性Studentprint(Student.name) # 打印类的name属性Students.name = ‘Michael’ # 给实例绑定name属性print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性Michaelprint(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问Studentdel s.name # 如果删除实例的name属性print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了Student从上面的例子可以看出，在编写程序的时候，千万不要把实例属性和类属性使用相同的名字，因为相同名称的实例属性将屏蔽掉类属性，但是当你删除实例属性后，再使用相同的名称，访问到的将是类属性。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[获取对象信息]]></title>
+      <url>%2F2016%2F12%2F11%2F%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E4%BF%A1%E6%81%AF%2F</url>
+      <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081# -*- coding=utf-8 -*-'获取对象信息'import types#使用 type(),判断类型是否相同print type(123)#一个变量指向函数或者类print type(abs)#两个数据类型是否相同print type(123)==type(345)#判断对象是否为函数def fn(): passprint type(fn)==types.FunctionTypeprint type(abs)==types.BuiltinFunctionTypeprint type(lambda x:x)==types.LambdaTypeprint type(x for x in range(1,10)) == types.GeneratorType#isinstance()#对于class的继承关系来说，使用type()就很不方便。我们要判断class的类型，可以使用isinstance()函数。class A(): print 'A'class B(): print 'B'a = A()b = B()#判断类是否一样print isinstance(a,A)print isinstance(b,B)print isinstance(a,B)#判断基本类型print isinstance(123,int)print isinstance('str',str)#判断一个变量是否是某些类型中的一种print isinstance([12,3,3],(list,tuple))print isinstance((12,2,3),(list,tuple))#使用dir()#获得一个对象的所有属性和方法print dir('f')class MyObject(): def __init__(self): self.x = 9 def power(self): return self.x *self.xobj = MyObject()#有x属性吗print hasattr(obj,'x')print hasattr(obj,'y')print obj.x#设置属性y,设置初始值print setattr(obj,'y',19)print hasattr(obj,'y')#获取y值,如果不存在可以随意设值print getattr(obj,'y')print getattr(obj,'z',-1)print hasattr(obj,'power')print getattr(obj,'power')一个正确的用法的例子如下：def readImage(fp): if hasattr(fp, 'read'): return readData(fp) return None]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[继承和多态]]></title>
+      <url>%2F2016%2F12%2F11%2F%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81%2F</url>
+      <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344# -*- coding=utf-8 -*-'继承和多态''父类引用指向子类对象'class Animal(object): def run(self): print 'Animal run ...'#子类重写父类方法class Dog(Animal): def run(self): print 'Dog run ...'class Cat(Animal): def run(self): print 'Cat run ...'d = Dog()d.run()c = Cat()c.run()#判断一个变量是否是某个类型可以用isinstance()判断：a = list()#list类型b = Animal()c = Dog()#多态print isinstance(a,list)print isinstance(b,Animal)print isinstance(c,Animal)def run_twice(Animal): Animal.run() Animal.run()#传入父类run_twice(Animal())#传入子类run_twice(Dog())run_twice(Cat()) 静态语言 vs 动态语言对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。 对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了： 动态语言的特点：不需要继承Animal父类，也可以重写方法12345class M(object): def run(self): print 'M run ...'run_twice(M()) 小结继承可以把父类的所有功能都直接拿过来，这样就不必重零做起，子类只需要新增自己特有的方法，也可以把父类不适合的方法覆盖重写。动态语言的鸭子类型特点决定了继承不像静态语言那样是必须的。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[访问的限制]]></title>
+      <url>%2F2016%2F12%2F11%2F%E8%AE%BF%E9%97%AE%E7%9A%84%E9%99%90%E5%88%B6%2F</url>
+      <content type="text"><![CDATA[如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线，在Python中，实例的变量名如果以开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问。1234567891011121314151617181920212223242526272829303132333435363738# -*- coding=utf-8 -*-'访问的限制'# __name表示私有参数class student(object): def __init__(self,name,age): self.__name = name self.__age = age def print_scroe(self): print ('%s : %s'%self.__name,self.__age) def get_name(self): return self.__name def get_age(self): return self.__age def set_name(self,name): self.__name = names = student('A',100)#私有参数无法被调用#print s.__nameprint s.get_age()print s.get_name()s.set_name('B')print s.get_name()#仍然可以通过一下方法调用#不建议这么使用print s._student__name#并没有修改成功，毫无卵用s.__name = 'C'print s.get_name()]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[类和实例]]></title>
+      <url>%2F2016%2F12%2F11%2F%E7%B1%BB%E5%92%8C%E5%AE%9E%E4%BE%8B%2F</url>
+      <content type="text"><![CDATA[面向对象最重要的概念就是类（Class）和实例（Instance），必须牢记类是抽象的模板，比如Student类，而实例是根据类创建出来的一个个具体的“对象”，每个对象都拥有相同的方法，但各自的数据可能不同。 仍以Student类为例，在Python中，定义类是通过class关键字： class Student(object): passclass后面紧接着是类名，即Student，类名通常是大写开头的单词，紧接着是(object)，表示该类是从哪个类继承下来的，继承的概念我们后面再讲，通常，如果没有合适的继承类，就使用object类，这是所有类最终都会继承的类。 定义好了Student类，就可以根据Student类创建出Student的实例，创建实例是通过类名+()实现的： bart = Student()bart Student 可以看到，变量bart指向的就是一个Student的实例，后面的0x10a67a590是内存地址，每个object的地址都不一样，而Student本身则是一个类。 可以自由地给一个实例变量绑定属性，比如，给实例bart绑定一个name属性： bart.name = ‘Bart Simpson’bart.name‘Bart Simpson’由于类可以起到模板的作用，因此，可以在创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的init方法，在创建实例的时候，就把name，score等属性绑上去：12345class Student(object): def __init__(self, name, score): self.name = name self.score = score 注意到init方法的第一个参数永远是self，表示创建的实例本身，因此，在init方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。 有了init方法，在创建实例的时候，就不能传入空的参数了，必须传入与init方法匹配的参数，但self不需要传，Python解释器自己会把实例变量传进去： bart = Student(‘Bart Simpson’, 59)bart.name‘Bart Simpson’bart.score59和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量self，并且，调用时，不用传递该参数。除此之外，类的方法和普通函数没有什么区别，所以，你仍然可以用默认参数、可变参数、关键字参数和命名关键字参数。 小结类是创建实例的模板，而实例则是一个一个具体的对象，各个实例拥有的数据都互相独立，互不影响； 方法就是与实例绑定的函数，和普通函数不同，方法可以直接访问实例的数据； 通过在实例上调用方法，我们就直接操作了对象内部的数据，但无需知道方法内部的实现细节。 和静态语言不同，Python允许对实例变量绑定任何数据，也就是说，对于两个实例变量，虽然它们都是同一个类的不同实例，但拥有的变量名称都可能不同： bart = Student(‘Bart Simpson’, 59)lisa = Student(‘Lisa Simpson’, 87)bart.age = 8bart.age8lisa.ageTraceback (most recent call last): File ““, line 1, in AttributeError: ‘Student’ object has no attribute ‘age’]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[模板]]></title>
+      <url>%2F2016%2F12%2F11%2F%E6%A8%A1%E6%9D%BF%2F</url>
+      <content type="text"><![CDATA[请注意，每一个包目录下面都会有一个init.py的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。init.py可以是空文件，也可以有Python代码，因为init.py本身就是一个模块，而它的模块名就是mycompany。12345678910111213141516171819202122232425#!/usr/bin/env python# -*- coding=utf-8 -*-' a test module 使用模版'__author__ = 'Li'import sysdef test(): #sys模块有一个argv变量，用list存储了命令行的所有参数 #argv至少有一个元素，因为第一个参数永远是该.py文件的名称 args = sys.argv print args if len(args)==1: print('Hello, world!') elif len(args)==2: print('Hello, %s!' % args[1]) else: print('Too many arguments!')#Python解释器把一个特殊变量__name__置为__main__，# 而如果在其他地方导入该hello模块时，if判断将失败，因此，# 这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。if __name__=='__main__': test() 作用域：正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等； 类似xxx这样的变量是特殊变量，可以被直接引用，但是有特殊用途，比如上面的author，name就是特殊变量，hello模块定义的文档注释也可以用特殊变量doc访问，我们自己的变量一般不要用这种变量名； 类似_xxx和xxx这样的函数或变量就是非公开的（private），不应该被直接引用，比如_abc，abc等； 之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。 小结：外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[偏函数(Partial function)]]></title>
+      <url>%2F2016%2F12%2F11%2F%E5%81%8F%E5%87%BD%E6%95%B0-Partial-function%2F</url>
+      <content type="text"><![CDATA[Python的functools模块提供了很多有用的功能，其中一个就是偏函数（Partial function）123456789101112131415161718192021222324252627# -*- coding=utf-8 -*-import functoolsprint int('123')print int('123',base=8)print int('123',16)#functools.partial就是帮助我们创建一个偏函数的int2 = functools.partial(int,base=2)print int2('1000000')print int2('1010101',base=10)#简单总结functools.partial的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），# 返回一个新的函数，调用这个新函数会更简单。kw = &#123; 'base': 10 &#125;print int('10010', **kw)#返回最大值#默认值为10max2 = functools.partial(max,10)print max2(1,2,3,4)#相当于args = (1,2,3,4)print max(*args) 小结当函数的参数个数太多，需要简化时，使用functools.partial可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[装饰器]]></title>
+      <url>%2F2016%2F12%2F10%2F%E8%A3%85%E9%A5%B0%E5%99%A8%2F</url>
+      <content type="text"><![CDATA[本质上，decorator就是一个返回函数的高阶函数。所以，我们要定义一个能打印日志的decorator，可以定义如下：12345def log(func): def wrapper(*args, **kw): print('call %s():' % func.__name__) return func(*args, **kw) return wrapper 观察上面的log，因为它是一个decorator，所以接受一个函数作为参数，并返回一个函数。我们要借助Python的@语法，把decorator置于函数的定义处：123@logdef now(): print('2015-3-25') 调用now()函数，不仅会运行now()函数本身，还会在运行now()函数前打印一行日志： now()call now():2015-3-25把@log放到now()函数的定义处，相当于执行了语句： now = log(now)由于log()是一个decorator，返回一个函数，所以，原来的now()函数仍然存在，只是现在同名的now变量指向了新的函数，于是调用now()将执行新函数，即在log()函数中返回的wrapper()函数。 wrapper()函数的参数定义是(args, *kw)，因此，wrapper()函数可以接受任意参数的调用。在wrapper()函数内，首先打印日志，再紧接着调用原始函数。 如果decorator本身需要传入参数，那就需要编写一个返回decorator的高阶函数，写出来会更复杂。比如，要自定义log的文本：1234567def log(text): def decorator(func): def wrapper(*args, **kw): print('%s %s():' % (text, func.__name__)) return func(*args, **kw) return wrapper return decorator 这个3层嵌套的decorator用法如下：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394@log('execute')def now(): print('2015-3-25')执行结果如下：&gt;&gt;&gt; now()execute now():2015-3-25代码区域：# -*- coding=utf-8 -*-import functools#装饰器def now(): print '12-12-12'#赋值给变量f = nowf()#获取函数的名字print now.__name__print f.__name__def log(func): def wrapper(*args, **kw): print('call %s():' % func.__name__) return func(*args, **kw) return wrapper# 把@log放到now()函数的定义处，相当于执行了语句：# now = log(now)@logdef now(): print '12-3-3'now()#如果decorator本身需要传入参数，#那就需要编写一个返回decorator的高阶函数，写出来会更复杂。def log(text): def decorator(func): def wrapper(*args, **kw): print('%s %s():' % (text, func.__name__)) return func(*args, **kw) return wrapper return decorator#now = log('execute')(now)@log('exe')def now(): print 'hello'now()print now.__name__#只需记住在定义wrapper()的前面加上@functools.wraps(func)即可。def log(func): @functools.wraps(func) def wrapper(*args, **kw): print('call %s():' % func.__name__) return func(*args, **kw) return wrapper@logdef now(): print '123'now()def log(text): def de(func): @functools.wraps(func) def wrapper(*args,**kw): print '%s %s():' % (text, func.__name__) return func(*args,**kw) return wrapper return de@log('h')def now(): print 'hh'now()]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[匿名函数]]></title>
+      <url>%2F2016%2F12%2F10%2F%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%2F</url>
+      <content type="text"><![CDATA[12345678910111213141516#关键字lambda表示匿名函数，冒号前面的x表示函数参数。# 匿名函数有个限制，就是只能有一个表达式，不用写return，返回值就是该表达式的结果。l = list(map(lambda x:x+x,[1,2,3]))print l#把匿名函数传给变量l2 = lambda x:x*xprint l2(5)#把匿名函数作为返回值def l3(x,y): return lambda :x*x+y*yl4 = l3(2,3)print l4()]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[函数作为返回值]]></title>
+      <url>%2F2016%2F12%2F09%2F%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E8%BF%94%E5%9B%9E%E5%80%BC%2F</url>
+      <content type="text"><![CDATA[高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。123456789101112131415161718192021222324252627#返回函数def lazy_sum(*args): def sum(): ax = 0 for n in args: ax = ax + n return ax return sum#返回函数print lazy_sum(1,2,3)#调用f()才是真正求和的结果f = lazy_sum(1,2,3)print f()#闭包def count(): fs = [] for i in range(1, 4): def f(): return i*i fs.append(f) return fsf1,f2,f3 = count()print f1(),f2(),f3() 全部都是9！原因就在于返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了3，因此最终结果为9。返回闭包时牢记的一点就是：返回函数不要引用任何循环变量，或者后续会发生变化的变量。123456789101112131415#绑定前面的值#方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，#无论该循环变量后续如何更改，已绑定到函数参数的值不变def count2(): def sum(j): def g(): return j*j return g fs = [] for i in range(1,4): fs.append(sum(i)) return fsff,ff2,ff3 = count2()print ff(),ff2(),ff3() 小结一个函数可以返回一个计算结果，也可以返回一个函数。返回一个函数时，牢记该函数并未执行，返回函数中不要引用任何可能会变化的变量。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[python高级函数]]></title>
+      <url>%2F2016%2F12%2F08%2Fpython%E9%AB%98%E7%BA%A7%E5%87%BD%E6%95%B0%2F</url>
+      <content type="text"><![CDATA[1.变量可以指向函数123&gt;&gt;&gt; x = abs(-10)&gt;&gt;&gt; x10 2.函数名也是变量 那么函数名是什么呢？函数名其实就是指向函数的变量！对于abs()这个函数，完全可以把函数名abs看成变量，它指向一个可以计算绝对值的函数！如果把abs指向其他对象，会有什么情况发生？12345&gt;&gt;&gt; abs = 10&gt;&gt;&gt; abs(-10)Traceback (most recent call last): File "&lt;stdin&gt;", line 1, in &lt;module&gt;TypeError: 'int' object is not callable 3.传入函数 既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。一个最简单的高阶函数：12def add(x, y, f):return f(x) + f(y) 当我们调用add(-5, 6, abs)时，参数x，y和f分别接收-5，6和abs，根据函数定义，我们可以推导计算过程为：1234x = -5y = 6f = absf(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11return 11 用代码验证一下：12&gt;&gt;&gt; add(-5, 6, abs)11 4.map()和reduce()函数1234567891011121314151617181920def f(x): return x * x# map的使用#参数一：方法名#参数二：传入值r = map(f, [1, 2, 3, 4, 5, 6, 7])print(list(r))#简写方法l = list(map(f,[1,2,3,4,5,67,7]))print(l)reduce的用法。reduce把一个函数作用在一个序列[x1, x2, x3, ...]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算，其效果就是：reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)列：from functools import reducedef str2int(s):def fn(x, y):return x * 10 + y def char2num(s):return &#123;'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9&#125;[s] return reduce(fn, map(char2num, s)) 5.filter(筛选函数) 注意到filter()函数返回的是一个Iterator，也就是一个惰性序列，所以要强迫filter()完成计算结果，需要用list()函数获得所有结果并返回list。 把一个序列中的空字符串删掉，可以这么写：1234567# s.strip(rm) 删除s字符串中开头、结尾处空白（'\n','\t','\r'）# s.lstrip(rm) 删除s字符串中开头处空白# s.rstrip(rm) 删除s字符串中结尾处空白def not_empty(s):return s and s.strip()list(filter(not_empty, ['A', '', 'B', None, 'C', ' ']))# 结果: ['A', 'B', 'C'] filter()的作用是从一个序列中筛出符合条件的元素。由于filter()使用了惰性计算，所以只有在取filter()结果的时候，才会真正筛选并每次返回下一个筛出的元素。 回数练习：12345678910def is_palindrome(n): I,m=n,0 while I: m=m*10+I%10 #//表示整除 I=I//10 return(n==m)output = filter(is_palindrome, range(1, 1000))print(list(output)) 6.sorted(排序)12345678910111213141516171819# sorted:排序#默认从小到大排序l = [1,2,3,-1,-2,-3]s = sorted(l)print(s)#传入第二个参数key:按照绝对值排序s2 = sorted(l,key=abs)print(s2)#字符串排序#'Z' &lt; 'a'，结果，大写字母Z会排在小写字母a的前面#转换成小写s3 = sorted(['bob', 'about', 'Zoo', 'Credit'],key=str.lower)print(s3)#传入第三个参数reverse：反向排序s4 = sorted(['bob', 'about', 'Zoo', 'Credit'],key=str.lower,reverse=True)print(s4)]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[python高级特性]]></title>
+      <url>%2F2016%2F12%2F07%2Fpython%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%2F</url>
+      <content type="text"><![CDATA[12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849501.Slice(切片)：取指定索引范围的操作（取指定范围的值）#取前十个数字print L[0:10]#取倒数十个数字print L[-10:]#取1-50之间的数字print L[1:50]#前十个数每两个取一个print L[:10:2]print L[1:100:2]#每五个取一个print L[::5]#全部输出print L[:]t = (1,2,3,4)[0:2]print t2.Iteration（迭代):python中通过 for ... in 实现# -*- coding=utf-8 -*-d = &#123;'a': 1, 'b': 2, 'c': 3&#125;#迭代keyfor k in d: print k#迭代valuefor v in d.values(): print v#迭代全部的值for k,v in d.items(): print k,v#如何判断一个对象是可迭代对象呢？# 方法是通过collections模块的Iterable类型判断：from collections import Iterables = isinstance('abc',Iterable)s2 = isinstance([1,2,3],Iterable)s3 = isinstance((1,2,3),Iterable)s4 = isinstance(set([1,2,3]),Iterable)s5 = isinstance(&#123;'a':'1','b':'2'&#125;,Iterable)#整数不能迭代s6 = isinstance(123,Iterable)print s,s2,s3,s4,s5,s6#多个对象迭代for x,y,z in [(1,1,1),(2,2,2),(3,3,3)]: print x,y,z 3.列表生成式1234567891011121314151617181920212223242526272829303132333435#生成listl = list(range(1,20))print lL= []for x in range(1,10): L.append(x * x)print L#简写方式l = [x * x for x in range(1,11)]print ll = [x*x for x in range(1,11) if x%2==0]print l#使用两层循环l = [x+y for x in 'abc' for y in 'cba']print l#显示列表import osl = [d for d in os.listdir('.')]print l#简写方式d = &#123;'x': 'A', 'y': 'B', 'z': 'C' &#125;l = [ x+'='+y for x,y in d.items()]print l#转换成小写L = ['Hello', 'World', 'IBM', 'Apple']l = [x.lower() for x in L]print l 4.generator(生成器)通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。所以，如果列表元素可以按照某种算法推算出来，那我们是否可以在循环的过程中不断推算出后续的元素呢？这样就不必创建完整的list，从而节省大量的空间。在Python中，这种一边循环一边计算的机制，称为生成器：generator。 要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator：123456&gt;&gt;&gt; L = [x * x for x in range(10)]&gt;&gt;&gt; L[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]&gt;&gt;&gt; g = (x * x for x in range(10))&gt;&gt;&gt; g&lt;generator object &lt;genexpr&gt; at 0x1022ef630&gt; 可以通过next()函数获得generator的下一个返回值： 方法二:如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator1234567891011121314151617181920212223242526#generator生成器#第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator：#斐波那契数列def fib(max): n,a,b = 0,0,1 while n&lt;max: yield b a,b = b,a+b n = n+1for x in fib(10): print x#yield语句返回，再次执行时从上次返回的yield语句处继续执行def odd(): print('step 1') yield 1 print('step 2') yield(3) print('step 3') yield(5)for x in odd(): print x 迭代器： 直接作用于for循环的数据类型有以下几种：一类是集合数据类型，如list、tuple、dict、set、str等；一类是generator，包括生成器和带yield的generator function。这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。可以使用isinstance()判断一个对象是否是Iterable对象：12345678910111213141516171819202122&gt;&gt;&gt; from collections import Iterable&gt;&gt;&gt; isinstance([], Iterable)True&gt;&gt;&gt; isinstance(&#123;&#125;, Iterable)True&gt;&gt;&gt; isinstance('abc', Iterable)True&gt;&gt;&gt; isinstance((x for x in range(10)), Iterable)True&gt;&gt;&gt; isinstance(100, Iterable)False可以使用isinstance()判断一个对象是否是Iterator（可迭代的）对象：&gt;&gt;&gt; from collections import Iterator&gt;&gt;&gt; isinstance((x for x in range(10)), Iterator)True&gt;&gt;&gt; isinstance([], Iterator)False&gt;&gt;&gt; isinstance(&#123;&#125;, Iterator)False&gt;&gt;&gt; isinstance('abc', Iterator)False 生成器都是Iterator对象，但list、dict、str虽然是Iterable（可迭代），却不是Iterator(迭代器)。为什么？因为Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过next()函数实现按需计算下一个数据，所以Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。 Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。 把list、dict、str等Iterable变成Iterator可以使用iter()函数：1234&gt;&gt;&gt; isinstance(iter([]), Iterator)True&gt;&gt;&gt; isinstance(iter('abc'), Iterator)True 小结凡是可作用于for循环的对象都是Iterable类型； 凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列； 集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[函数的参数]]></title>
+      <url>%2F2016%2F12%2F06%2F%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%2F</url>
+      <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104#参数组合# 位置参数：参数# 默认参数:设置初始值# 可变参数：*number# 命名关键字参数: 在参数 *# 关键字参数 : **kw# 函数的参数def add_end(L=None): if L is None: L = [] L.append('END') return Lprint(add_end())# 可变参数，在参数前加上 *# 由于参数个数不确定，# 我们首先想到可以把a，b，c……作为一个list或tuple传进来，# 这样，函数可以定义如下：def calc(numbers): sum = 0 for n in numbers: sum = sum + n * n return sum# 传入listprint(calc([1, 2, 3, 4]))# 传入tupleprint(calc((1, 2, 3, 4)))# 可变参数# 定义可变参数和定义一个list或tuple参数相比，仅仅在参数前面加了一个*号def calc2(*numbers): sum = 0 for n in numbers: sum = sum + n * n return sumprint(calc2())print(calc2(5, 6))# 传入一个list或tuple# Python允许你在list或tuple前面加一个*号，# 把list或tuple的元素变成可变参数传进去a = [1, 2, 3]b = (1, 2, 3)print(calc2(*a))print(calc2(*b))# 关键字参数，在参数前面加 **# 关键字参数允许你传入0个或任意个含参数名的参数，# 这些关键字参数在函数内部自动组装为一个dictdef person(name, age, **k): print(name, age, k)person('name', 1)person('a', '1', p='1', p1=2)extra = &#123;'a':'1','b':'2'&#125;person('name','age',city = extra['a'],b = extra['b'])#使用 **全部添加#不会影响到外面的 extraperson('name','age',**extra)#命名关键字参数#在参数中间加入 *,表示限定参数名称固定def person(name, age, *, city, job): print(name,age,city,job)person('name','age',city='bj',job='cxy')#如果参数中有可变参数#后面跟着的命名关键字参数就不再需要一个特殊分隔符 *了def person(name, age, *ages, city, job): print(name,age,ages,city,job)person('a','b',city='c',job='d')#如果参数有默认值时，不用传入def person(name, age, *, city='Beijing', job): print(name, age, city, job)person('a','b',job='job')#默认参数：def power(x, n=2): s = 1while n &gt; 0: n = n - 1 s = s * x return s#函数的参数： 默认参数必须指向不变对象！def add_end(L=None):if L is None: L = [] L.append('END') return L 小结：要注意定义可变参数和关键字参数的语法： *args是可变参数，args接收的是一个tuple； **kw是关键字参数，kw接收的是一个dict。 以及调用函数时如何传入可变参数和关键字参数的语法： 可变参数既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过args传入：func((1, 2, 3))； 关键字参数既可以直接传入：func(a=1, b=2)，又可以先组装dict，再通过kw传入：func({‘a’: 1, ‘b’: 2})。 使用args和*kw是Python的习惯写法，当然也可以用其他参数名，但最好使用习惯用法。 命名的关键字参数是为了限制调用者可以传入的参数名，同时可以提供默认值。 定义命名的关键字参数在没有可变参数的情况下不要忘了写分隔符*，否则定义的将是位置参数。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[函数]]></title>
+      <url>%2F2016%2F12%2F06%2F%E5%87%BD%E6%95%B0%2F</url>
+      <content type="text"><![CDATA[12345678910111213141516171819202122232425262728293031323334353637383940414243# -*- coding:utf-8 -*-#python自带函数#函数#abs绝对值abs(10)a = abs(-100)print a#最大值m = max(1,2,3,4,5)print m#数据类型转换print int('120')print int(123.12)print str(123)print bool(1)print bool(0)#引用，相当于给abs起了一个别名a = absprint a(-1)#hex转成十六进制#isinstance参数类型检查#raise抛出异常def my_abs(x): if not isinstance(x,(int,float)): raise TypeError('Bad operand type') if x&gt;0: return x else: return -xprint my_abs(99)#pass为空函数，没有空函数的话报错c = 1if c&gt;18: pass]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[dictionary和set]]></title>
+      <url>%2F2016%2F12%2F06%2Fdictionary%E5%92%8Cset%2F</url>
+      <content type="text"><![CDATA[dict:字典的简写dictionary:就是java中的map集合，以键值对的形式储存数据。12345678910111213141516171819202122232425262728d = &#123;'Michael': 95, 'Bob': 75, 'Tracy': 85&#125;print(d['Bob'])#改d['Bob'] = 100print(d['Bob'])#判断值是否存在# 1.通过in来判断# 2.通过dice.get()来判断print('Bob' in d)print(d.get('Bod'))print(d.get('Bods',-1))#删除 pop(key)d.pop('Bob')print(d)#增加d['h'] = 'HHH'print(d)#删除全部# d.clear()# print('clear:',d)#遍历for x in d: print ("d[%s]=" %x,d[x]) list比较，dict有以下几个特点： 查找和插入的速度极快，不会随着key的增加而变慢；需要占用大量的内存，内存浪费多。而list相反： 查找和插入的时间随着元素的增加而增加；占用空间小，浪费内存很少。 dict的key必须是不可变对象。 这是因为dict根据key来计算value的存储位置，如果每次计算相同的key得出的结果不同，那dict内部就完全混乱了。这个通过key计算位置的算法称为哈希算法（Hash）。 要保证hash的正确性，作为key的对象就不能变。在Python中，字符串、整数等都是不可变的，因此，可以放心地作为key。而list是可变的，就不能作为key set:去除重复的值，和java中的相同1234567891011121314151617181920212223242526272829303132333435s = set([1,2,3])# -*- coding: utf-8 -*-s = (1,2,3)s2 = (1,[2,3])#s中的值是不可变的对象#将tuple放入dictmydict = &#123;s:'s'&#125;print mydict#将s2放入set#s2中的值[2,3]是可变的# myset = set([s2])# print mysetmyset = set([1,2,3])myset.add(4)print myset#删除myset.remove(1)print myseta = set([1,2,3])b = set([2,3,4])#并集print (a|b)#交集print (a&amp;b)#补集 b的补集print (a - b)]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[循环]]></title>
+      <url>%2F2016%2F12%2F05%2F%E5%BE%AA%E7%8E%AF%2F</url>
+      <content type="text"><![CDATA[12345678910111213141516171819202122232425262728293031323334# -*- coding: utf-8 -*-#for循环name = ['h','hh','hhh']for n in name: print n#循环累加sum = 0;for x in [1,2,3,4,5,6,7,8,9]: sum = sum+x print sum#生成整数序列mylis = list(range(10))print mylis#累加sum1 = 0;for x in range(101): sum1 = sum1+x print sum1#whlie循环sum2 = 0n = 99while n &gt; 0: sum2 = sum2 + n n = n-2print sum2#break直接退出循环#continue跳过，开始下一轮的循环]]></content>
     </entry>
 
     
