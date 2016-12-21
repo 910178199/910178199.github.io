@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。
-摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全">
+<meta name="description" content="ord()获取字符串的整数表示chr()把编码转换为字符len()长度 ‘ABC’.encode(‘ascii’) 编码  b’ABC’.decode(‘ascii’) 解码
+12345678格式化：  %d    整数    %f    浮点数    %s    字符串    %x    十六进制整数    列：&apos;Hi, %s, you have $%d.&apos; % (&apos;Michael&apos;, 1000">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简要算法">
-<meta property="og:url" content="910178199.github.io/2016/12/18/摘要算法/index.html">
+<meta property="og:title" content="python字符串">
+<meta property="og:url" content="910178199.github.io/2016/12/05/python字符串/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。
-摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全">
-<meta property="og:updated_time" content="2016-12-18T09:16:39.229Z">
+<meta property="og:description" content="ord()获取字符串的整数表示chr()把编码转换为字符len()长度 ‘ABC’.encode(‘ascii’) 编码  b’ABC’.decode(‘ascii’) 解码
+12345678格式化：  %d    整数    %f    浮点数    %s    字符串    %x    十六进制整数    列：&apos;Hi, %s, you have $%d.&apos; % (&apos;Michael&apos;, 1000">
+<meta property="og:updated_time" content="2016-12-21T08:26:14.898Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简要算法">
-<meta name="twitter:description" content="Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。
-摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全">
+<meta name="twitter:title" content="python字符串">
+<meta name="twitter:description" content="ord()获取字符串的整数表示chr()把编码转换为字符len()长度 ‘ABC’.encode(‘ascii’) 编码  b’ABC’.decode(‘ascii’) 解码
+12345678格式化：  %d    整数    %f    浮点数    %s    字符串    %x    十六进制整数    列：&apos;Hi, %s, you have $%d.&apos; % (&apos;Michael&apos;, 1000">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="910178199.github.io/2016/12/18/摘要算法/"/>
+  <link rel="canonical" href="910178199.github.io/2016/12/05/python字符串/"/>
 
 
 
 
 
-  <title> 简要算法 | Mr.Robot </title>
+  <title> python字符串 | Mr.Robot </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/摘要算法/">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/05/python字符串/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="布鲁斯李">
@@ -288,7 +288,7 @@
             
             
               
-                简要算法
+                python字符串
               
             
           </h1>
@@ -301,8 +301,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-18T16:14:10+08:00">
-                2016-12-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-05T15:08:31+08:00">
+                2016-12-05
               </time>
             
 
@@ -317,8 +317,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/18/摘要算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/18/摘要算法/" itemprop="commentCount"></span>
+                <a href="/2016/12/05/python字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/05/python字符串/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -344,9 +344,8 @@
       
 
       
-        <p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。<br>摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。</p>
-<p>摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全不同。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'haslib摘要算法'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line"><span class="comment"># MD5加密</span></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(<span class="string">'my name '</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">md5.update(<span class="string">'is lijian'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(md5.hexdigest())</div><div class="line"></div><div class="line"><span class="comment"># SHA1加密</span></div><div class="line">sha1 = hashlib.sha1()</div><div class="line">sha1.update(<span class="string">'my name'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">sha1.update(<span class="string">'is lijian'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(sha1.hexdigest())</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 练习</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_md5</span><span class="params">(password)</span>:</span></div><div class="line">    md5 = hashlib.md5()</div><div class="line">    md5.update(str(password).encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> md5.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line">print(calc_md5(<span class="string">'123456'</span>))</div><div class="line"></div><div class="line"><span class="comment"># 练习二：</span></div><div class="line">db = &#123;</div><div class="line">    <span class="string">'michael'</span>: <span class="string">'e10adc3949ba59abbe56e057f20f883e'</span>,</div><div class="line">    <span class="string">'bob'</span>: <span class="string">'878ef96e86145580c38c87f0410ad153'</span>,</div><div class="line">    <span class="string">'alice'</span>: <span class="string">'99b1c2188db85afee403b1536010c2c9'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(user, password)</span>:</span></div><div class="line">    <span class="keyword">if</span> calc_md5(password) == db[user]:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"></div><div class="line">print(login(<span class="string">'bob'</span>, <span class="string">'abc999'</span>))</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 练习三：</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_md5</span><span class="params">(age)</span>:</span></div><div class="line">    md5 = hashlib.md5()</div><div class="line">    md5.update(str(age).encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> md5.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(username, password)</span>:</span></div><div class="line">    r = get_md5(password + username + <span class="string">'the-Salt'</span>)</div><div class="line">    db[username] = r</div><div class="line">    <span class="keyword">return</span> r</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(username,password)</span>:</span></div><div class="line">    r = get_md5(password + username + <span class="string">'the-Salt'</span>)</div><div class="line">    <span class="keyword">if</span> db[username]== r:</div><div class="line">        print(<span class="string">'True'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'False'</span>)</div><div class="line"></div><div class="line"></div><div class="line">print(register(<span class="string">'123'</span>,<span class="string">'123'</span>))</div><div class="line">login(<span class="string">'123'</span>,<span class="string">'123'</span>)</div><div class="line"></div><div class="line">print(db)</div></pre></td></tr></table></figure>
+        <p>ord()获取字符串的整数表示<br>chr()把编码转换为字符<br>len()长度<br> ‘ABC’.encode(‘ascii’) 编码<br>  b’ABC’.decode(‘ascii’) 解码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">格式化：  </div><div class="line">%d    整数    </div><div class="line">%f    浮点数    </div><div class="line">%s    字符串    </div><div class="line">%x    十六进制整数    </div><div class="line"></div><div class="line">列：</div><div class="line"><span class="string">'Hi, %s, you have $%d.'</span> % (<span class="string">'Michael'</span>, <span class="number">1000000</span>)</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -372,18 +371,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/18/struct/" rel="next" title="strucr">
-                <i class="fa fa-chevron-left"></i> strucr
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/18/itertools/" rel="prev" title="itertools">
-                itertools <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/05/list和tuple/" rel="prev" title="list和tuple">
+                list和tuple <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -399,10 +394,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/18/摘要算法/"
-     data-title="简要算法"
+        <div class="ds-share flat" data-thread-key="2016/12/05/python字符串/"
+     data-title="python字符串"
      data-content=""
-     data-url="910178199.github.io/2016/12/18/摘要算法/">
+     data-url="910178199.github.io/2016/12/05/python字符串/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -432,8 +427,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/18/摘要算法/"
-           data-title="简要算法" data-url="910178199.github.io/2016/12/18/摘要算法/">
+      <div class="ds-thread" data-thread-key="2016/12/05/python字符串/"
+           data-title="python字符串" data-url="910178199.github.io/2016/12/05/python字符串/">
       </div>
     
   </div>

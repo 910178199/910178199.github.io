@@ -247,6 +247,20 @@
     </entry>
 
     
+    <entry>
+      <title><![CDATA[list和tuple]]></title>
+      <url>%2F2016%2F12%2F05%2Flist%E5%92%8Ctuple%2F</url>
+      <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859# -*- coding: utf-8 -*-mylist = ['one','two','there']print mylist#长度print len(mylist)print mylist[0],mylist[1],mylist[2],mylist[-1]#mylist[-1]为最后一个元素#append在末尾追加数据mylist.append('end')print mylist#insert插入数据mylist.insert(0,'hh')print mylist#pop删除默认最后一个元素mylist.pop()print mylist#pop(i)删除指定位置数据mylist.pop(0)print mylist#替换数据mylist[0] = 'first'print mylist#不同数据v = ['str',123,4.0]print v#在插入一个listv1 = ['h','hh',v,'hhh']print v1#-----------------------------------------tuple：元组（元组的指向不变）每一个元素都不能改变值tuple。tuple和list非常类似，但是tuple一旦初始化就不能修改#元组是（）包括的mytuple = ('one','two','there')print mytuple[0]#不能插入数据#mytuple[0] = 'hh'# print mytuplet = ()print t#可变的tuplet = ('a','b',['C','D'])t[2][0] = 'A't[2][1] = 'B'print t]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[python字符串]]></title>
+      <url>%2F2016%2F12%2F05%2Fpython%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+      <content type="text"><![CDATA[ord()获取字符串的整数表示chr()把编码转换为字符len()长度 ‘ABC’.encode(‘ascii’) 编码 b’ABC’.decode(‘ascii’) 解码 12345678格式化： %d 整数 %f 浮点数 %s 字符串 %x 十六进制整数 列：'Hi, %s, you have $%d.' % ('Michael', 1000000)]]></content>
+    </entry>
+
+    
   
   
 </search>
