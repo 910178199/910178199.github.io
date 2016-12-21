@@ -262,142 +262,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/XML解析/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="布鲁斯李">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Mr.Robot">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/18/XML解析/" itemprop="url">
-                  XML解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-18T23:09:18+08:00">
-                2016-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/18/XML解析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/18/XML解析/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>XML虽然比JSON复杂，在Web中应用也不如以前多了，不过仍有很多地方在用，所以，有必要了解如何操作XML。</p>
-<p>DOM vs SAX</p>
-<p>操作XML有两种方法：DOM和SAX。DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。</p>
-<p>正常情况下，优先考虑SAX，因为DOM实在太占内存。</p>
-<p>在Python中使用SAX解析XML非常简洁，通常我们关心的事件是start_element，end_element和char_data，准备好这3个函数，然后就可以解析xml了。</p>
-<p>举个例子，当SAX解析器读到一个节点时：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href="/"&gt;python&lt;/a&gt;</div></pre></td></tr></table></figure></p>
-<p>会产生3个事件：</p>
-<p>start_element事件，在读取<a href="/">时；</a></p>
-<p>char_data事件，在读取python时；</p>
-<p>end_element事件，在读取时。<br>用代码实验一下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> xml.parsers.expat <span class="keyword">import</span> ParserCreate</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DefaultSaxHandler</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_element</span><span class="params">(self, name, attrs)</span>:</span></div><div class="line">        print(<span class="string">'sax:start_element: %s, attrs: %s'</span> % (name, str(attrs)))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">end_element</span><span class="params">(self, name)</span>:</span></div><div class="line">        print(<span class="string">'sax:end_element: %s'</span> % name)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">char_data</span><span class="params">(self, text)</span>:</span></div><div class="line">        print(<span class="string">'sax:char_data: %s'</span> % text)</div><div class="line"></div><div class="line">xml = <span class="string">r'''&lt;?xml version="1.0"?&gt;</span></div><div class="line">&lt;ol&gt;</div><div class="line">    &lt;li&gt;&lt;a href="/python"&gt;Python&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;li&gt;&lt;a href="/ruby"&gt;Ruby&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ol&gt;</div><div class="line">'''</div><div class="line"></div><div class="line">handler = DefaultSaxHandler()</div><div class="line">parser = ParserCreate()</div><div class="line">parser.StartElementHandler = handler.start_element</div><div class="line">parser.EndElementHandler = handler.end_element</div><div class="line">parser.CharacterDataHandler = handler.char_data</div><div class="line">parser.Parse(xml)</div></pre></td></tr></table></figure></p>
-<p>需要注意的是读取一大段字符串时，CharacterDataHandler可能被多次调用，所以需要自己保存起来，在EndElementHandler里面再合并。</p>
-<p>除了解析XML外，如何生成XML呢？99%的情况下需要生成的XML结构都是非常简单的，因此，最简单也是最有效的生成XML的方法是拼接字符串：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">L = []</div><div class="line">L.append(<span class="string">r'&lt;?xml version="1.0"?&gt;'</span>)</div><div class="line">L.append(<span class="string">r'&lt;root&gt;'</span>)</div><div class="line">L.append(encode(<span class="string">'some &amp; data'</span>))</div><div class="line">L.append(<span class="string">r'&lt;/root&gt;'</span>)</div><div class="line"><span class="keyword">return</span> <span class="string">''</span>.join(L)</div></pre></td></tr></table></figure></p>
-<p>如果要生成复杂的XML呢？建议你不要用XML，改成JSON。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> xml.parsers.expat <span class="keyword">import</span> ParserCreate</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WeatherSaxHandler</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.db = &#123;<span class="string">'yweather:forecast'</span>: &#123;&#125;&#125;</div><div class="line">        self.count = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_element</span><span class="params">(self, name, attrs)</span>:</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> name == <span class="string">'yweather:location'</span>:</div><div class="line">            self.db[<span class="string">'yweather:location'</span>] = attrs</div><div class="line"></div><div class="line">        <span class="keyword">if</span> name == <span class="string">'yweather:forecast'</span>:</div><div class="line">            self.count += <span class="number">1</span></div><div class="line">            self.db[<span class="string">'yweather:forecast'</span>][self.count] = attrs   <span class="comment"># db['yweather:forecast']也是一个字典</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_weather</span><span class="params">(xml)</span>:</span></div><div class="line">    handler = WeatherSaxHandler()</div><div class="line">    parser = ParserCreate()</div><div class="line">    parser.StartElementHandler = handler.start_element</div><div class="line">    parser.Parse(xml)</div><div class="line">    result = &#123;<span class="string">"today"</span>: &#123;&#125;, <span class="string">"tomorrow"</span>: &#123;&#125;, <span class="string">"city"</span>: handler.db[<span class="string">'yweather:location'</span>][<span class="string">'city'</span>], <span class="string">"country"</span>: handler.db[<span class="string">'yweather:location'</span>][<span class="string">'country'</span>]&#125;</div><div class="line">    result[<span class="string">"today"</span>][<span class="string">"low"</span>] = int(handler.db[<span class="string">'yweather:forecast'</span>][<span class="number">1</span>][<span class="string">'low'</span>])</div><div class="line">    result[<span class="string">"today"</span>][<span class="string">"text"</span>] = handler.db[<span class="string">'yweather:forecast'</span>][<span class="number">1</span>][<span class="string">'text'</span>]</div><div class="line">    result[<span class="string">"today"</span>][<span class="string">"high"</span>] = int(handler.db[<span class="string">'yweather:forecast'</span>][<span class="number">1</span>][<span class="string">'high'</span>])</div><div class="line">    result[<span class="string">"tomorrow"</span>][<span class="string">"low"</span>] = int(handler.db[<span class="string">'yweather:forecast'</span>][<span class="number">2</span>][<span class="string">'low'</span>])</div><div class="line">    result[<span class="string">"tomorrow"</span>][<span class="string">"text"</span>] = handler.db[<span class="string">'yweather:forecast'</span>][<span class="number">2</span>][<span class="string">'text'</span>]</div><div class="line">    result[<span class="string">"tomorrow"</span>][<span class="string">"high"</span>] = int(handler.db[<span class="string">'yweather:forecast'</span>][<span class="number">2</span>][<span class="string">'high'</span>])</div><div class="line">    <span class="keyword">return</span> result</div><div class="line"></div><div class="line"><span class="comment"># 测试:</span></div><div class="line">data = <span class="string">r'''&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;</span></div><div class="line">&lt;rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"&gt;</div><div class="line">    &lt;channel&gt;</div><div class="line">        &lt;title&gt;Yahoo! Weather - Beijing, CN&lt;/title&gt;</div><div class="line">        &lt;lastBuildDate&gt;Wed, 27 May 2015 11:00 am CST&lt;/lastBuildDate&gt;</div><div class="line">        &lt;yweather:location city="Beijing" region="" country="China"/&gt;</div><div class="line">        &lt;yweather:units temperature="C" distance="km" pressure="mb" speed="km/h"/&gt;</div><div class="line">        &lt;yweather:wind chill="28" direction="180" speed="14.48" /&gt;</div><div class="line">        &lt;yweather:atmosphere humidity="53" visibility="2.61" pressure="1006.1" rising="0" /&gt;</div><div class="line">        &lt;yweather:astronomy sunrise="4:51 am" sunset="7:32 pm"/&gt;</div><div class="line">        &lt;item&gt;</div><div class="line">            &lt;geo:lat&gt;39.91&lt;/geo:lat&gt;</div><div class="line">            &lt;geo:long&gt;116.39&lt;/geo:long&gt;</div><div class="line">            &lt;pubDate&gt;Wed, 27 May 2015 11:00 am CST&lt;/pubDate&gt;</div><div class="line">            &lt;yweather:condition text="Haze" code="21" temp="28" date="Wed, 27 May 2015 11:00 am CST" /&gt;</div><div class="line">            &lt;yweather:forecast day="Wed" date="27 May 2015" low="20" high="33" text="Partly Cloudy" code="30" /&gt;</div><div class="line">            &lt;yweather:forecast day="Thu" date="28 May 2015" low="21" high="34" text="Sunny" code="32" /&gt;</div><div class="line">            &lt;yweather:forecast day="Fri" date="29 May 2015" low="18" high="25" text="AM Showers" code="39" /&gt;</div><div class="line">            &lt;yweather:forecast day="Sat" date="30 May 2015" low="18" high="32" text="Sunny" code="32" /&gt;</div><div class="line">            &lt;yweather:forecast day="Sun" date="31 May 2015" low="20" high="37" text="Sunny" code="32" /&gt;</div><div class="line">        &lt;/item&gt;</div><div class="line">    &lt;/channel&gt;</div><div class="line">&lt;/rss&gt;</div><div class="line">'''</div><div class="line">weather = parse_weather(data)</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'city'</span>] == <span class="string">'Beijing'</span>, weather[<span class="string">'city'</span>]</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'country'</span>] == <span class="string">'China'</span>, weather[<span class="string">'country'</span>]</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'today'</span>][<span class="string">'text'</span>] == <span class="string">'Partly Cloudy'</span>, weather[<span class="string">'today'</span>][<span class="string">'text'</span>]</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'today'</span>][<span class="string">'low'</span>] == <span class="number">20</span>, weather[<span class="string">'today'</span>][<span class="string">'low'</span>]</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'today'</span>][<span class="string">'high'</span>] == <span class="number">33</span>, weather[<span class="string">'today'</span>][<span class="string">'high'</span>]</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'tomorrow'</span>][<span class="string">'text'</span>] == <span class="string">'Sunny'</span>, weather[<span class="string">'tomorrow'</span>][<span class="string">'text'</span>]</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'tomorrow'</span>][<span class="string">'low'</span>] == <span class="number">21</span>, weather[<span class="string">'tomorrow'</span>][<span class="string">'low'</span>]</div><div class="line"><span class="keyword">assert</span> weather[<span class="string">'tomorrow'</span>][<span class="string">'high'</span>] == <span class="number">34</span>, weather[<span class="string">'tomorrow'</span>][<span class="string">'high'</span>]</div><div class="line">print(<span class="string">'Weather:'</span>, str(weather))</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/contextlib/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1621,11 +1485,137 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/16/ThreadLocal/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="布鲁斯李">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://p3.gexing.com/G1/M00/3D/72/rBACE1H70rSDbu2aAACrhxbgUpU542_200x200_3.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Mr.Robot">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/16/ThreadLocal/" itemprop="url">
+                  ThreadLocal
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T08:48:33+08:00">
+                2016-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/16/ThreadLocal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/ThreadLocal/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ThreadLocal-解决函数中的传递问题"><a href="#ThreadLocal-解决函数中的传递问题" class="headerlink" title="ThreadLocal:解决函数中的传递问题"></a>ThreadLocal:解决函数中的传递问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">ThreadLocal帮你自动做这件事：</div><div class="line"></div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line"><span class="comment"># 创建全局ThreadLocal对象:</span></div><div class="line">local_school = threading.local()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_student</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 获取当前线程关联的student:</span></div><div class="line">    std = local_school.student</div><div class="line">    print(<span class="string">'Hello, %s (in %s)'</span> % (std, threading.current_thread().name))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_thread</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="comment"># 绑定ThreadLocal的student:</span></div><div class="line">    local_school.student = name</div><div class="line">    process_student()</div><div class="line"></div><div class="line">t1 = threading.Thread(target= process_thread, args=(<span class="string">'Alice'</span>,), name=<span class="string">'Thread-A'</span>)</div><div class="line">t2 = threading.Thread(target= process_thread, args=(<span class="string">'Bob'</span>,), name=<span class="string">'Thread-B'</span>)</div><div class="line">t1.start()</div><div class="line">t2.start()</div><div class="line">t1.join()</div><div class="line">t2.join()</div><div class="line">执行结果：</div><div class="line"></div><div class="line">Hello, Alice (<span class="keyword">in</span> Thread-A)</div><div class="line">Hello, Bob (<span class="keyword">in</span> Thread-B)</div></pre></td></tr></table></figure>
+<p>ThreadLocal最常用的地方就是为每个线程绑定一个数据库连接，HTTP请求，用户身份信息等，这样一个线程的所有调用到的处理函数都可以非常方便地访问这些资源。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>一个ThreadLocal变量虽然是全局变量，但每个线程都只能读写自己线程的独立副本，互不干扰。ThreadLocal解决了参数在一个线程中各个函数之间互相传递的问题。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1666,7 +1656,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
