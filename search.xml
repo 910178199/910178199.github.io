@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[asyncio]]></title>
+      <url>%2F2016%2F12%2F21%2Fasyncio%2F</url>
+      <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465# -*- coding=utf-8 -*-'异步IO''''asyncio的编程模型就是一个消息循环。我们从asyncio模块中直接获取一个EventLoop的引用，然后把需要执行的协程扔到EventLoop中执行，就实现了异步IO。'''#yield from 可以让我们方便地调用另一个generator,把asyncio.sleep(1)看成是一个耗时1秒#的IO操作，在此期间，主线程并未等待，而是去执行EventLoop中其他可以执行的coroutine#yield from将调用一个子协程（也就是在一个协程中调用另一个协程）并直接获得子协程的返回结果#当正在被主线程执行的的coroutine遇到 yield from语句时，当前coroutine会被挂起，#yield from 后面的coroutine 会被主线程执行。import asyncio@asyncio.coroutinedef hello(): print('Hello world') #异步调用yield from asyncio.sleep(1) r = yield from asyncio.sleep(1) print('Hello again')#获取EventLooploop = asyncio.get_event_loop()#执行coroutineloop.run_until_complete(hello())loop.close()import threadingimport asyncio@asyncio.coroutinedef hello(): print('Hello world! (%s)' % threading.currentThread()) yield from asyncio.sleep(1) print('Hello again! (%s)' % threading.currentThread())loop = asyncio.get_event_loop()tasks = [hello(), hello()]loop.run_until_complete(asyncio.wait(tasks))loop.close()import asynciodef wget(host): print('wget %s...' % host) connect = asyncio.open_connection(host, 80) reader, writer = yield from connect header = 'GET / HTTP/1.0\r\nHost: %s\r\n\r\n' % host writer.write(header.encode('utf-8')) yield from writer.drain() while True: line = yield from reader.readline() if line == b'\r\n': break print('%s header &gt; %s' % (host, line.decode('utf-8').rstrip())) writer.close()loop = asyncio.get_event_loop()tasks = [wget(host) for host in ['www.sina.con.cn','www.sohu.com','www.163.com']]loop.run_until_complete(asyncio.wait(tasks))loop.close()]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Coroutine]]></title>
+      <url>%2F2016%2F12%2F21%2FCoroutine%2F</url>
+      <content type="text"><![CDATA[最大的优势就是协程极高的执行效率。因为子程序切换不是线程切换，而是由程序自身控制，因此，没有线程切换的开销，和多线程比，线程数量越多，协程的性能优势就越明显。 第二大优势就是不需要多线程的锁机制，因为只有一个线程，也不存在同时写变量冲突，在协程中控制共享资源不加锁，只需要判断状态就好了，所以执行效率比多线程高很多。 Python对协程的支持是通过generator实现的。 在generator中，我们不但可以通过for循环来迭代，还可以不断调用next()函数获取由yield语句返回的下一个值。 但是Python的yield不但可以返回一个值，它还可以接收调用者发出的参数。 12345678910111213141516171819202122def consumer(): r = '' while True: n = yield r if not n: return print('[CONSUMER] Consuming %s...' % n) r = '200 OK'def produce(c): c.send(None) n = 0 while n &lt; 5: n = n + 1 print('[PRODUCER] Producing %s...' % n) r = c.send(n) print('[PRODUCER] Consumer return: %s' % r) c.close()c = consumer()produce(c) 注意到consumer函数是一个generator，把一个consumer传入produce后： 首先调用c.send(None)启动生成器； 然后，一旦生产了东西，通过c.send(n)切换到consumer执行； consumer通过yield拿到消息，处理，又通过yield把结果传回； produce拿到consumer处理的结果，继续生产下一条消息； produce决定不生产了，通过c.close()关闭consumer，整个过程结束。 整个流程无锁，由一个线程执行，produce和consumer协作完成任务，所以称为“协程”，而非线程的抢占式多任务。 最后套用Donald Knuth的一句话总结协程的特点： “子程序就是协程的一种特例。”]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[async/await]]></title>
       <url>%2F2016%2F12%2F21%2Fasync-await%2F</url>
       <content type="text"><![CDATA[用asyncio提供的@asyncio.coroutine可以把一个generator标记为coroutine类型，然后在coroutine内部用yield from调用另一个coroutine实现异步操作。 从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读。async/await: 把@asyncio.coroutine替换为async；把yield from替换为await。12345678910111213141516171819202122import asyncio@asyncio.coroutinedef hello(): print("Hello world!") r = yield from asyncio.sleep(1) print("Hello again!")loop = asyncio.get_event_loop()loop.run_until_complete(hello())# 使用async/awaitasync def hello(): print("Hello world!") r = await asyncio.sleep(1) print("Hello again!")loop = asyncio.get_event_loop()loop.run_until_complete(hello())loop.close()]]></content>

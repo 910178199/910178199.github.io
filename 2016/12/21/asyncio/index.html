@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Python的内建模块itertools提供了非常有用的用于操作迭代对象的函数。1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-&apos;itertools 迭代工具&apos;import itertools#无限迭代器：count(),#cycle()会把传入的一个序列无限重复下去#repeat">
+<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465# -*- coding=utf-8 -*-&apos;异步IO&apos;&apos;&apos;&apos;asyncio的编程模型就是一个消息循环。我们从asyncio模块中直接获取一个EventLoo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="itertools">
-<meta property="og:url" content="910178199.github.io/2016/12/18/itertools/index.html">
+<meta property="og:title" content="asyncio">
+<meta property="og:url" content="910178199.github.io/2016/12/21/asyncio/index.html">
 <meta property="og:site_name" content="Mr.Robot">
-<meta property="og:description" content="Python的内建模块itertools提供了非常有用的用于操作迭代对象的函数。1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-&apos;itertools 迭代工具&apos;import itertools#无限迭代器：count(),#cycle()会把传入的一个序列无限重复下去#repeat">
-<meta property="og:updated_time" content="2016-12-18T09:36:52.513Z">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465# -*- coding=utf-8 -*-&apos;异步IO&apos;&apos;&apos;&apos;asyncio的编程模型就是一个消息循环。我们从asyncio模块中直接获取一个EventLoo">
+<meta property="og:updated_time" content="2016-12-21T07:05:37.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="itertools">
-<meta name="twitter:description" content="Python的内建模块itertools提供了非常有用的用于操作迭代对象的函数。1234567891011121314151617181920212223242526272829303132333435# -*- coding=utf-8 -*-&apos;itertools 迭代工具&apos;import itertools#无限迭代器：count(),#cycle()会把传入的一个序列无限重复下去#repeat">
+<meta name="twitter:title" content="asyncio">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465# -*- coding=utf-8 -*-&apos;异步IO&apos;&apos;&apos;&apos;asyncio的编程模型就是一个消息循环。我们从asyncio模块中直接获取一个EventLoo">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="910178199.github.io/2016/12/18/itertools/"/>
+  <link rel="canonical" href="910178199.github.io/2016/12/21/asyncio/"/>
 
 
 
 
 
-  <title> itertools | Mr.Robot </title>
+  <title> asyncio | Mr.Robot </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/18/itertools/">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/21/asyncio/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="布鲁斯李">
@@ -285,7 +285,7 @@
             
             
               
-                itertools
+                asyncio
               
             
           </h1>
@@ -298,8 +298,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-18T17:20:07+08:00">
-                2016-12-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T15:05:10+08:00">
+                2016-12-21
               </time>
             
 
@@ -314,8 +314,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/18/itertools/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/18/itertools/" itemprop="commentCount"></span>
+                <a href="/2016/12/21/asyncio/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/asyncio/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -341,9 +341,7 @@
       
 
       
-        <p>Python的内建模块itertools提供了非常有用的用于操作迭代对象的函数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'itertools 迭代工具'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> itertools</div><div class="line"></div><div class="line"><span class="comment">#无限迭代器：count(),</span></div><div class="line"><span class="comment">#cycle()会把传入的一个序列无限重复下去</span></div><div class="line"><span class="comment">#repeat()负责把一个元素无限重复下去，不过如果提供第二个参数就可以限定重复次数</span></div><div class="line"></div><div class="line"><span class="comment"># n = itertools.count(1)</span></div><div class="line"><span class="comment"># for n in n:</span></div><div class="line"><span class="comment">#     print(n)</span></div><div class="line"></div><div class="line"><span class="comment"># cs = itertools.cycle('ABC')  # 注意字符串也是序列的一种</span></div><div class="line"><span class="comment"># for c in cs:</span></div><div class="line"><span class="comment">#     print(c)</span></div><div class="line"></div><div class="line">ns = itertools.repeat(<span class="string">'A'</span>, <span class="number">3</span>)</div><div class="line"><span class="keyword">for</span> n <span class="keyword">in</span> ns:</div><div class="line">    print(n)</div><div class="line"></div><div class="line"><span class="comment">#通过takewhile()等函数根据条件判断来截取出一个有限的序列</span></div><div class="line">na = itertools.count(<span class="number">1</span>)</div><div class="line">ns = itertools.takewhile(<span class="keyword">lambda</span> x:x &lt;=<span class="number">10</span>,na)</div><div class="line">print(list(ns))</div><div class="line"></div><div class="line"><span class="comment">#chain()把一组迭代对象串联起来，形成一个更大的迭代器</span></div><div class="line"><span class="keyword">for</span> n <span class="keyword">in</span> itertools.chain(<span class="string">'jqa'</span>,<span class="string">'xyz'</span>):</div><div class="line">    print(n)</div><div class="line"></div><div class="line"><span class="comment">#groupby()把迭代器中相邻的重复元素挑出来放在一起：</span></div><div class="line"><span class="comment">#忽略大小写</span></div><div class="line"><span class="keyword">for</span> key,group <span class="keyword">in</span> itertools.groupby(<span class="string">'AAAaCCcCDDDSDS'</span>,<span class="keyword">lambda</span> x:x.upper()):</div><div class="line">    print(key,list(group))</div></pre></td></tr></table></figure></p>
-<p>##小结<br>itertools模块提供的全部是处理迭代功能的函数，它们的返回值不是list，而是Iterator，只有用for循环迭代的时候才真正计算。</p>
-
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'异步IO'</span></div><div class="line"><span class="string">'''asyncio的编程模型就是一个消息循环。</span></div><div class="line">我们从asyncio模块中直接获取一个EventLoop的引用，</div><div class="line">然后把需要执行的协程扔到EventLoop中执行，就实现了异步IO。'''</div><div class="line"></div><div class="line"><span class="comment">#yield from 可以让我们方便地调用另一个generator,把asyncio.sleep(1)看成是一个耗时1秒</span></div><div class="line"><span class="comment">#的IO操作，在此期间，主线程并未等待，而是去执行EventLoop中其他可以执行的coroutine</span></div><div class="line"></div><div class="line"><span class="comment">#yield from将调用一个子协程（也就是在一个协程中调用另一个协程）并直接获得子协程的返回结果</span></div><div class="line"><span class="comment">#当正在被主线程执行的的coroutine遇到 yield from语句时，当前coroutine会被挂起，</span></div><div class="line"><span class="comment">#yield from 后面的coroutine 会被主线程执行。</span></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="meta">@asyncio.coroutine</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'Hello world'</span>)</div><div class="line">    <span class="comment">#异步调用yield from asyncio.sleep(1)</span></div><div class="line">    r = <span class="keyword">yield</span> <span class="keyword">from</span> asyncio.sleep(<span class="number">1</span>)</div><div class="line">    print(<span class="string">'Hello again'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#获取EventLoop</span></div><div class="line">loop = asyncio.get_event_loop()</div><div class="line"><span class="comment">#执行coroutine</span></div><div class="line">loop.run_until_complete(hello())</div><div class="line">loop.close()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"></div><div class="line"><span class="meta">@asyncio.coroutine</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'Hello world! (%s)'</span> % threading.currentThread())</div><div class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> asyncio.sleep(<span class="number">1</span>)</div><div class="line">    print(<span class="string">'Hello again! (%s)'</span> % threading.currentThread())</div><div class="line"></div><div class="line">loop = asyncio.get_event_loop()</div><div class="line">tasks = [hello(), hello()]</div><div class="line">loop.run_until_complete(asyncio.wait(tasks))</div><div class="line">loop.close()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">wget</span><span class="params">(host)</span>:</span></div><div class="line">    print(<span class="string">'wget %s...'</span> % host)</div><div class="line">    connect = asyncio.open_connection(host, <span class="number">80</span>)</div><div class="line">    reader, writer = <span class="keyword">yield</span> <span class="keyword">from</span> connect</div><div class="line">    header = <span class="string">'GET / HTTP/1.0\r\nHost: %s\r\n\r\n'</span> % host</div><div class="line">    writer.write(header.encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> writer.drain()</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        line = <span class="keyword">yield</span> <span class="keyword">from</span> reader.readline()</div><div class="line">        <span class="keyword">if</span> line == <span class="string">b'\r\n'</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        print(<span class="string">'%s header &gt; %s'</span> % (host, line.decode(<span class="string">'utf-8'</span>).rstrip()))</div><div class="line">    writer.close()</div><div class="line"></div><div class="line">loop = asyncio.get_event_loop()</div><div class="line">tasks = [wget(host) <span class="keyword">for</span> host <span class="keyword">in</span> [<span class="string">'www.sina.con.cn'</span>,<span class="string">'www.sohu.com'</span>,<span class="string">'www.163.com'</span>]]</div><div class="line">loop.run_until_complete(asyncio.wait(tasks))</div><div class="line">loop.close()</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -369,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/18/摘要算法/" rel="next" title="简要算法">
-                <i class="fa fa-chevron-left"></i> 简要算法
+              <a href="/2016/12/21/Coroutine/" rel="next" title="Coroutine">
+                <i class="fa fa-chevron-left"></i> Coroutine
               </a>
             
           </div>
@@ -378,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/18/contextlib/" rel="prev" title="contextlib">
-                contextlib <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -396,10 +390,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/18/itertools/"
-     data-title="itertools"
+        <div class="ds-share flat" data-thread-key="2016/12/21/asyncio/"
+     data-title="asyncio"
      data-content=""
-     data-url="910178199.github.io/2016/12/18/itertools/">
+     data-url="910178199.github.io/2016/12/21/asyncio/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -429,8 +423,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/18/itertools/"
-           data-title="itertools" data-url="910178199.github.io/2016/12/18/itertools/">
+      <div class="ds-thread" data-thread-key="2016/12/21/asyncio/"
+           data-title="asyncio" data-url="910178199.github.io/2016/12/21/asyncio/">
       </div>
     
   </div>
