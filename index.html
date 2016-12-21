@@ -262,6 +262,130 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/21/aiohttp/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="布鲁斯李">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/v.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Mr.Robot">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/21/aiohttp/" itemprop="url">
+                  aiohttp
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T15:08:31+08:00">
+                2016-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/21/aiohttp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/aiohttp/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>asyncio可以实现单线程并发IO操作。如果仅用在客户端，发挥的威力不大。<br>如果把asyncio用在服务器端，例如Web服务器，由于HTTP连接就是IO操作，<br>因此可以用单线程+coroutine实现多用户的高并发支持。<br>asyncio实现了TCP、UDP、SSL等协议，aiohttp则是基于asyncio实现的HTTP框架。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">from</span> aiohttp <span class="keyword">import</span> web</div><div class="line"></div><div class="line"><span class="string">'编写一个HTTP服务器'</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">0.5</span>)</div><div class="line">    <span class="keyword">return</span> web.Response(body=<span class="string">b'&lt;h1&gt;Index&lt;/h1&gt;'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">0.5</span>)</div><div class="line">    text = <span class="string">'&lt;h1&gt;hello %s&lt;/h1&gt;'</span> % request.match_info[<span class="string">'name'</span>]</div><div class="line">    <span class="keyword">return</span> web.Response(body=text.encode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(loop)</span>:</span></div><div class="line">    app = web.Application(loop=loop)</div><div class="line">    app.router.add_route(<span class="string">'GET'</span>, <span class="string">'/'</span>, index)</div><div class="line">    app.router.add_route(<span class="string">'GET'</span>, <span class="string">'/hello/&#123;name&#125;'</span>, hello)</div><div class="line">    srv = <span class="keyword">await</span> loop.create_server(app.make_handler(), <span class="string">'127.0.0.1'</span>, <span class="number">8000</span>)</div><div class="line">    print(<span class="string">'Server started at http://127.0.0.1:8000'</span>)</div><div class="line">    <span class="keyword">return</span> srv</div><div class="line"></div><div class="line"></div><div class="line">loop = asyncio.get_event_loop()</div><div class="line">loop.run_until_complete(init(loop))</div><div class="line"><span class="comment"># 一直运行直到停止</span></div><div class="line">loop.run_forever()</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/21/asyncio/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1398,130 +1522,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/19/TCP编程/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="布鲁斯李">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/v.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Mr.Robot">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/19/TCP编程/" itemprop="url">
-                  TCP编程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-19T14:20:42+08:00">
-                2016-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/19/TCP编程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/19/TCP编程/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'TCP服务端'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</div><div class="line"></div><div class="line"><span class="comment">#绑定端口</span></div><div class="line">s.bind((<span class="string">'127.0.0.1'</span>,<span class="number">9999</span>))</div><div class="line"></div><div class="line"><span class="comment">#监听</span></div><div class="line">s.listen(<span class="number">5</span>)</div><div class="line">print(<span class="string">'Wait ...'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">tcplink</span><span class="params">(sock,addr)</span>:</span></div><div class="line">    print(<span class="string">'Accept new connection from %s:%s...'</span> % addr)</div><div class="line">    sock.send(<span class="string">b'Welcome'</span>)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        data = sock.recv(<span class="number">1024</span>)</div><div class="line">        time.sleep(<span class="number">1</span>)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data <span class="keyword">or</span> data.decode(<span class="string">'utf-8'</span>) == <span class="string">'exit'</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        sock.send((<span class="string">'Hello, %s!'</span> % data.decode(<span class="string">'utf-8'</span>)).encode(<span class="string">'utf-8'</span>))</div><div class="line">    sock.close()</div><div class="line">    print(<span class="string">'Connection from %s:%s closed.'</span> % addr)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="comment">#接受一个连接</span></div><div class="line">    sock,addr = s.accept()</div><div class="line">    <span class="comment">#创建新的线程来处理</span></div><div class="line">    t = threading.Thread(target=tcplink,args=(sock,addr))</div><div class="line">    t.start()</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"><span class="string">'客户端'</span></div><div class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</div><div class="line"><span class="comment">#连接服务器</span></div><div class="line">s.connect((<span class="string">'127.0.0.1'</span>,<span class="number">9999</span>))</div><div class="line"></div><div class="line"><span class="comment">#接受消息</span></div><div class="line">print(<span class="string">'----'</span>,s.recv(<span class="number">1024</span>).decode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line"><span class="keyword">for</span> data <span class="keyword">in</span> [<span class="string">b'A'</span>,<span class="string">b'B'</span>,<span class="string">b'C'</span>]:</div><div class="line">    <span class="comment">#发送数据</span></div><div class="line">    s.send(data)</div><div class="line">    print(s.recv(<span class="number">1024</span>).decode(<span class="string">'utf-8'</span>))</div><div class="line">s.send(<span class="string">b'exit'</span>)</div><div class="line">s.close()</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1567,7 +1567,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
