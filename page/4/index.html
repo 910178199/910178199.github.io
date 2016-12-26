@@ -262,6 +262,138 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/15/StringIO和BytesIO/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="布鲁斯李">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/v.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Mr.Robot">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/15/StringIO和BytesIO/" itemprop="url">
+                  StringIO和BytesIO
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T09:55:37+08:00">
+                2016-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/15/StringIO和BytesIO/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/StringIO和BytesIO/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a>StringIO</h2><p>很多时候，数据读写不一定是文件，也可以在内存中读写。</p>
+<p>StringIO顾名思义就是在内存中读写str。</p>
+<p>要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = StringIO()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'hello'</span>)</div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">' '</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'world!'</span>)</div><div class="line"><span class="number">6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(f.getvalue())</div><div class="line">hello world!</div></pre></td></tr></table></figure></p>
+<p>getvalue()方法用于获得写入后的str。</p>
+<h2 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a>BytesIO</h2><p>StringIO操作的只能是str，如果要操作二进制数据，就需要使用BytesIO。</p>
+<p>BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = BytesIO()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"><span class="number">6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(f.getvalue())</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure></p>
+<p>请注意，写入的不是str，而是经过UTF-8编码的bytes。</p>
+<p>和StringIO类似，可以用一个bytes初始化BytesIO，然后，像读文件一样读取：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = BytesIO(<span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>StringIO和BytesIO是在内存中操作str和bytes的方法，使得和读写文件具有一致的接口。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/15/IO操作/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1439,131 +1571,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="910178199.github.io/2016/12/12/面型对象高级编程之使用__slots__/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="布鲁斯李">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/v.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Mr.Robot">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Mr.Robot" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/12/面型对象高级编程之使用__slots__/" itemprop="url">
-                  面型对象高级编程之使用__slots__
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T15:56:19+08:00">
-                2016-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/12/面型对象高级编程之使用__slots__/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/面型对象高级编程之使用__slots__/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="面型对象高级编程之使用-slots"><a href="#面型对象高级编程之使用-slots" class="headerlink" title="面型对象高级编程之使用 __slots__"></a>面型对象高级编程之使用 <code>__slots__</code></h1><h4 id="slots-1-为了给该实例绑定任何属性和方法-2-可以限制"><a href="#slots-1-为了给该实例绑定任何属性和方法-2-可以限制" class="headerlink" title="__slots__1.为了给该实例绑定任何属性和方法 2.可以限制"></a><code>__slots__</code>1.为了给该实例绑定任何属性和方法 2.可以限制</h4><h4 id="slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"><a href="#slots-用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法" class="headerlink" title="__slots__用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法"></a><code>__slots__</code>用于限制该类实例的属性与方法，不能限制类本身和继承类实例的属性与方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">()</span>:</span></div><div class="line">   	<span class="comment"># 用tuple定义允许绑定的属性名称</span></div><div class="line">   	__slots__ = (<span class="string">'name'</span>,<span class="string">'age'</span>)</div><div class="line"></div><div class="line">	s = Student()<span class="comment">#创建新实例</span></div><div class="line">	s.name = <span class="string">'Name'</span><span class="comment">#绑定属性</span></div><div class="line">	s.age = <span class="string">'Age'</span></div><div class="line">	<span class="comment">#由于s没用方法到参数中，所以报错</span></div><div class="line">	<span class="comment">#s.s = 's'</span></div><div class="line"></div><div class="line">	<span class="comment">#使用__slots__要注意，__slots__定义的属性仅对当前类实例起作用</span></div><div class="line">	<span class="comment"># ，对继承的子类是不起作用的：</span></div><div class="line"></div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Man</span><span class="params">(Student)</span>:</span></div><div class="line">   	<span class="keyword">pass</span></div><div class="line"></div><div class="line">	m = Man()</div><div class="line">	<span class="comment">#m新创建的属性</span></div><div class="line">	m.s = <span class="string">'a'</span></div><div class="line">	<span class="comment">#子类调用并不起作用，报错</span></div><div class="line">	print(m.s,m.name)</div></pre></td></tr></table></figure>
-<p>除非在子类中也定义<strong>slots</strong>，这样，子类实例允许定义的属性就是自身的<strong>slots</strong>加上父类的<strong>slots</strong>。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1609,7 +1616,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
