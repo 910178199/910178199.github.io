@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Gradle的统一配置]]></title>
+      <url>%2F2017%2F01%2F08%2FGradle%E7%9A%84%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE%2F</url>
+      <content type="text"><![CDATA[]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Python之ORM]]></title>
       <url>%2F2016%2F12%2F26%2FPython%E4%B9%8BORM%2F</url>
       <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687# -*- coding=utf-8 -*-'ORM技术：Object-Relational Mapping，把关系数据库的表结构映射到对象上'import mysql.connectorfrom sqlalchemy import ForeignKey'在Python中，最有名的ORM框架是SQLAlchemy'from sqlalchemy import Column, String, create_enginefrom sqlalchemy.orm import sessionmaker, relationshipfrom sqlalchemy.ext.declarative import declarative_base# 创建对象的基类Base = declarative_base()# 创建表conn = mysql.connector.connect(host='localhost', user='root', password='password', database='test')cursor = conn.cursor()cursor.execute('create table if not exists users (id INTEGER PRIMARY KEY, name VARCHAR(20))')cursor.execute('create table if not exists book (id INTEGER PRIMARY KEY, name VARCHAR(20), user_id INTEGER )')cursor.close()# 定义USer对象class User(Base): # 表的名称 __tablename__ = 'user' # 表的结构 id = Column(String(20), primary_key=True) name = Column(String(20)) books = relationship('Book')class Book(Base): __tablename__ = 'book' id = Column(String(20), primary_key=True) name = Column(String(20)) # “多”的一方的book表是通过外键关联到user表的: user_id = Column(String(20), ForeignKey('user.id'))# 初始化数据库连接engin = create_engine('mysql+mysqlconnector://root:password@localhost:3306/test')# 创建DBsession类型DBsession = sessionmaker(bind=engin)'''create_engine()用来初始化数据库连接。SQLAlchemy用一个字符串表示连接信息：'数据库类型+数据库驱动名称://用户名:口令@机器地址:端口号/数据库名''''''1.往数据库添加一条数据'''# 添加记录session = DBsession()# #创建新User对象# bob = User(id=1,name='Bob')# session.add(bob)# session.commit()# 创建新Book对象# new_book_1 = Book(id=1,name='Book1',user_id = 1)# session.add(new_book_1)# session.commit()# new_book_2 = Book(id=2,name='Book2',user_id = 1)# session.add(new_book_2)# session.commit()# session.close()'''2.查询数据库中数据'''# #创建session对象# session = DBsession()# #创建Query查询，filter是where条件，最后调用one()返回唯一一行，调用all()则返回所有行# user = session.query(User).filter(User.id=='2').one()## #打印类型和对象的name属性# print('type',type(user))# print('name',user.name)# #关闭session# session.close()'ORM就是把数据库表的行与相应的对象建立关联，互相转换。''''ORM框架的作用就是把数据库表的一行记录与一个对象互相做自动转换。正确使用ORM的前提是了解关系数据库的原理。'''session = DBsession()user = session.query(User).filter(User.id == '1').one()print(user.name)print(user.books)session.close()]]></content>
